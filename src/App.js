@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import {NavLink,Switch,Route} from 'react-router-dom'
 import {PrivateRoute} from './comps/private-router/'
-import {Button} from 'reactstrap'
+import {Button,Container} from 'reactstrap'
 
 
 import Header from './header/'
@@ -59,7 +59,7 @@ class App extends Component {
     return (
       <div className="App">
       <Header  usersState={this.state.btnText}/>
-
+      <Container>
 <Switch>
 
 <PrivateRoute exact path='/logged-client' component={LoggedClient} />
@@ -70,7 +70,8 @@ class App extends Component {
 
 
 
-<Route render={()=>(//BY DEFAULT SHOW THIS
+{/*THIS PAGE ONLY SHOWS BY DEFUALT*/}
+<Route render={()=>(
 <div>
 <small>default page</small>
 <h1>Welcome</h1>
@@ -80,24 +81,19 @@ class App extends Component {
 <NavLink to='/forms/login/'><Button color='success'>Login</Button></NavLink>
 {'   '}
 <NavLink to='/forms/register/'><Button color='primary'>Register</Button></NavLink>
-
-</div>
-<div>
-<Route path='/forms/login/' component={Login} />
-<Route path='/forms/register/' component={Register} />
 </div>
 </div>
-
   )} />
+{/*THIS PAGE ONLY SHOWS BY DEFUALT*/}
 
-{/*THIS PAGE ONLY SHOWS MY DEFUALT*/}
+
 
 </Switch>
 
 
 
 
-
+  </Container>
       </div>
     );
   }

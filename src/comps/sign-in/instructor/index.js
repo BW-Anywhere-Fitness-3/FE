@@ -2,29 +2,41 @@ import React from 'react'
 import { Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
 
 
-
+ 
 
 
 
 class LoginInstructor extends React.Component{
-  constructor(){
-    super()
-
+constructor(props){
+    super(props)
+        this.state={
+          username:'',
+          password:'',
+        }
   }
+
+  send2Login = (e) =>{
+      e.preventDefault()
+      this.props.login(this.state)
+    }
 
 
   render(){
     return (
 
-          <Form>
-          <caption>Instructor</caption>
+          <Form onSubmit={this.send2Login}>
+          <h2>Instructor</h2>
       <FormGroup>
         <Label htmlFor="username">UserName</Label>
-        <Input type="text" name="username" id="username" placeholder="username" />
+        <Input type="text"
+        onChange={(e)=>this.setState({username:e.target.value})}
+         name="username" id="username" placeholder="username" />
       </FormGroup>
       <FormGroup>
         <Label htmlFor="password">Password</Label>
-        <Input type="password" name="password" id="password" placeholder="password " />
+        <Input type="password"
+        onChange={(e)=>this.setState({password:e.target.value})}
+         name="password" id="password" placeholder="password " />
       </FormGroup>
      
       <Button>Submit</Button>

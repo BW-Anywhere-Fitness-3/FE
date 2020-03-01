@@ -13,6 +13,13 @@ import {Button} from 'reactstrap'
 
 
 const Forms = (props) => {
+
+  const registerHandle = (obj) =>{
+        console.log(obj)
+
+  }
+
+
   return (
     <div>
     <div>
@@ -25,8 +32,8 @@ const Forms = (props) => {
       
     </div>
     <Switch>
-    <Route exact path='/forms/register/' component={Client} />
-    <Route exact path='/forms/register/as-instructor' component={Intructor} />
+    <Route exact path='/forms/register/' render={()=><Client register={registerHandle} />} />
+    <Route exact path='/forms/register/as-instructor' render={()=><Intructor register={registerHandle} />}/>
     </Switch>
 
     </div>

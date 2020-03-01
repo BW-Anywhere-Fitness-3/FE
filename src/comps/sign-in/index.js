@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState,useEffect} from 'react';
 import {NavLink,Route,Switch} from 'react-router-dom'
 import Client from './client/'
 import Intructor from './instructor/'
@@ -13,6 +13,25 @@ import {Button} from 'reactstrap'
 
 
 const Forms = (props) => {
+
+const loginHandle = (obj) =>{
+        console.log(obj)
+
+        async function pretendAuthReactor(){
+
+                try{
+
+                   await window.localStorage.setItem('token','clientValid')
+                 
+                }catch(err){
+                    throw Error(err)
+                }finally{
+                      await props.history.push('/logged-client')
+                }
+        }pretendAuthReactor()
+        
+  }
+
   return (
     <div>
     <div>
@@ -25,8 +44,8 @@ const Forms = (props) => {
       
     </div>
     <Switch>
-    <Route exact path='/forms/login/' component={Client} />
-    <Route exact path='/forms/login/as-instructor' component={Intructor} />
+    <Route exact path='/forms/login/' render={()=><Client login={loginHandle} />} />
+    <Route exact path='/forms/login/as-instructor' render={()=><Intructor login={loginHandle} />} />
     </Switch>
 
     </div>

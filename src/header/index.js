@@ -40,7 +40,7 @@ this.props.usersState==='Login/Register'?
 ://or
 
 (/*if they are logged in*/
-<NavLink to='/'><Button color='danger'>{this.props.usersState}</Button></NavLink>
+<NavLink to='/'><Button color='danger' onClick={()=>window.localStorage.clear()}>{this.props.usersState}</Button></NavLink>
 )
 
 }
