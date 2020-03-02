@@ -4,10 +4,6 @@ import React, { Component } from 'react';
 
 
 class Instructors extends Component {
-  constructor(){
-    super()
-  
-  }
 
 
 
