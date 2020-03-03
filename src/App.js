@@ -3,20 +3,20 @@ import './App.css';
 import {NavLink,Switch,Route} from 'react-router-dom'
 import {PrivateRoute} from './comps/private-router/'
 import {Button,Container} from 'reactstrap'
-
+import {connect} from 'react-redux'
 
 import Header from './header/'
 import Login from './comps/sign-in/'
 import Register from './comps/register/'
 import LoggedClient from './comps/logged-in/client/'
 import LoggedInstructor from './comps/logged-in/instructor/'
-
-
+import {getClasses} from './ReduxStore/action'
+import axios from 'axios'
 
 
 class App extends Component {
-  constructor(){
-    super()
+  constructor(props){
+    super(props)
     this.state={
       loggedOrNot:false,
       btnText:'Login/Register'
@@ -28,10 +28,9 @@ class App extends Component {
 
   componentDidMount(){//CDM START
 
-
+this.props.getClasses()
 
     if(window.localStorage.getItem('token'))//start of header button scheme
-
 
       /*do this: change state to know user is logged
        in and change button in header to a logout button*/ 
@@ -40,9 +39,8 @@ class App extends Component {
 
     /*if not then do this: change state to know no one is logged
        in and change button in header to a login or register button*/ 
-      else{this.setState({loggedOrNot:false,btnText:'Login/Register'})
-    }//end of header button scheme
-
+      else{this.setState({loggedOrNot:false,btnText:'Login/Register'})}
+    //end of header button scheme
 
 
   }//CDM FINISH
@@ -51,19 +49,30 @@ class App extends Component {
 
 
 
+componentDidUpdate(){
+// console.log(this.props)
 
+
+
+}
+
+
+logoutBtn = () =>{
+    this.setState({loggedOrNot:false,btnText:'Login/Register'})
+    window.localStorage.clear()
+}
 
 
 
   render() {
     return (
       <div className="App">
-      <Header  usersState={this.state.btnText}/>
+      <Header  usersState={this.state.btnText} logout={this.logoutBtn}/>
       <Container>
 <Switch>
 
 <PrivateRoute exact path='/logged-client' component={LoggedClient} />
-<PrivateRoute exact path='/logged-instuctor' component={LoggedInstructor} />
+<PrivateRoute exact path='/logged-instructor' component={LoggedInstructor} />
 <Route path='/forms/login' component={Login}/>
 <Route path='/forms/register' component={Register}/>
 
@@ -99,4 +108,16 @@ class App extends Component {
   }
 }
 
-export default App;
+
+
+const mapStateToProps = state =>{
+      return {
+        ...state,
+      }
+}
+
+export default connect(
+    mapStateToProps,
+    {getClasses}
+
+  )(App);

@@ -3,10 +3,10 @@ import {NavLink,Route,Switch} from 'react-router-dom'
 import Client from './client/'
 import Intructor from './instructor/'
 import {Button} from 'reactstrap'
+import axios from 'axios'
 
 
-
-
+ 
 
 
 
@@ -14,8 +14,26 @@ import {Button} from 'reactstrap'
 
 const Forms = (props) => {
 
-  const registerHandle = (obj) =>{
+  const registerHandle = (who,obj) =>{
+
+      switch(who){
+        case 'instructor':
+        axios.post('https://fitnessanywheregroup3.herokuapp.com/api/instructors/register/',obj).then(res=>{
+          console.log(res)
+            props.history.push('/fomrs/login')
+
+        }).catch(err=>console.log(err))
+        break;
+        case 'client':
+          axios.post('https://fitnessanywheregroup3.herokuapp.com/api/clients/register/',obj).then(res=>{
+          console.log(res)
+            props.history.push('/fomrs/login')
+
+        }).catch(err=>console.log(err))
+        break;
         console.log(obj)
+      }
+
 
   }
 
@@ -25,9 +43,9 @@ const Forms = (props) => {
     <div>
       <h1>Register as</h1>
 
-      <NavLink to='/forms/register/'><Button color='success'>Client</Button></NavLink>
+      <NavLink to='/forms/register/'><Button color='success'  style={{fontWeight:'bolder',fontSize:'1.3rem'}}>Client</Button></NavLink>
       {'     '}
-      <NavLink to='/forms/register/as-instructor'><Button color='primary'>Instructor</Button></NavLink>
+      <NavLink to='/forms/register/as-instructor'><Button color='primary'  style={{fontWeight:'bolder',fontSize:'1.3rem'}}>Instructor</Button></NavLink>
       
       
     </div>

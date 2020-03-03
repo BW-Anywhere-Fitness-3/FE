@@ -3,33 +3,83 @@ import {NavLink,Route,Switch} from 'react-router-dom'
 import Client from './client/'
 import Intructor from './instructor/'
 import {Button} from 'reactstrap'
-
-
-
-
-
-
+import axios from 'axios'
+import {connect} from 'react-redux'
+import {LoginInstrucotrs,LoginClient} from '../../ReduxStore/action'
+import {axiosCall} from '../axios/'
+import {LoggedContext} from '../ContextHook/'
+ 
 
 
 
 const Forms = (props) => {
 
-const loginHandle = (obj) =>{
+
+  console.log('form',props)
+        const [isFirtLogin,setisFirtLogin] = useState( )
+        const [welcomeMsg,setwelcomeMsg] = useState( )
+
+const loginHandle = (who,obj) =>{
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            switch(who){
+              case 'instructor':
+               const logz  = async () => {
+                      try{
+                       await   axiosCall().post('/api/instructors/login/',obj)
+             .then(res=>{
+          console.log('logging in....',res)
+            window.localStorage.setItem('token',res.data.token)
+                setisFirtLogin(res.data.isFirtLogin)
+                setwelcomeMsg(res.data.message)
+              LoginClient()
+
+        })
+             .catch(err=>console.log(err))
+             .finally(done=>{
+            props.history.push('/logged-instructor')
+
+        })
+                      }
+
+                      catch(err){
+                        throw Error(err)
+                      }
+            }
+
+
+            logz()
+        break;
+        case 'client':
+         axiosCall().post('/api/clients/login/',obj)
+         .then(res=>{
+          console.log('logging in....',res)
+            window.localStorage.setItem('token',res.data.token)
+             setisFirtLogin(res.data.isFirtLogin)
+                setwelcomeMsg(res.data.message)
+              LoginClient()
+        })
+         .catch(err=>console.log(err))
+         .finally(done=> {
+          props.history.push('/logged-client')
+        })
+
+        break;
         console.log(obj)
+      }
 
-        async function pretendAuthReactor(){
-
-                try{
-
-                   await window.localStorage.setItem('token','clientValid')
-                 
-                }catch(err){
-                    throw Error(err)
-                }finally{
-                      await props.history.push('/logged-client')
-                }
-        }pretendAuthReactor()
-        
   }
 
   return (
@@ -37,9 +87,9 @@ const loginHandle = (obj) =>{
     <div>
      <h1>Login as</h1>
 
-      <NavLink to='/forms/login/'><Button color='success'>Client</Button></NavLink>
+      <NavLink to='/forms/login/'><Button color='success' style={{fontWeight:'bolder',fontSize:'1.3rem'}}>Client</Button></NavLink>
       {'     '}
-      <NavLink to='/forms/login/as-instructor'><Button color='primary'>Instructor</Button></NavLink>
+      <NavLink to='/forms/login/as-instructor'><Button color='primary' style={{fontWeight:'bolder',fontSize:'1.3rem'}}>Instructor</Button></NavLink>
       
       
     </div>
@@ -52,4 +102,15 @@ const loginHandle = (obj) =>{
   );
 }
 
-export default Forms;
+
+const mapStateToProps = state =>{
+  return {
+    ...state,
+
+  }
+}
+    
+export default connect(
+  mapStateToProps,
+    {}
+  )(Forms);
