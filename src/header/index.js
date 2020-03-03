@@ -13,7 +13,10 @@ align-items:center;
 height:100px;
 border-bottom:double 3px #000;
 margin-bottom:100px;
-
+background-color:#000;
+border-bottom:solid red;
+-webkit-text-fill-color:azure;
+color:azure;
 `;
 
 
@@ -22,6 +25,7 @@ margin-bottom:100px;
 class NavBar extends React.Component{
 	constructor(props){
 		super(props)
+			
 	}
 
 
@@ -40,7 +44,7 @@ this.props.usersState==='Login/Register'?
 ://or
 
 (/*if they are logged in*/
-<NavLink to='/'><Button color='danger' onClick={()=>window.localStorage.clear()}>{this.props.usersState}</Button></NavLink>
+<NavLink to='/'><Button color='danger' onClick={()=>this.props.logout()}>{this.props.usersState}</Button></NavLink>
 )
 
 }

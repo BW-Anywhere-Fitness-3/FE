@@ -7,12 +7,12 @@ THIS AXIOS HOOK IS TO BE USED FOR
 */
 
 export const axiosCall = () =>{
-		const token = localStorage.getItem('token')
+		const token = window.localStorage.getItem('token')
 
 		return axios.create({
-			headers:{
-				authorization:token
-			},
-			baseURL:'http://localhost:5000'
+	
+			baseURL:'https://fitnessanywheregroup3.herokuapp.com'
 		})
 }
+
+
