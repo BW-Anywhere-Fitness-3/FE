@@ -63,7 +63,7 @@ const loginHandle = (who,obj) =>{
             logz()
         break;
         case 'client':
-         axiosCall().post('/api/clients/login/',obj)
+       axiosCall().post('/api/clients/login/',obj)
          .then(res=>{
           console.log('logging in....',res)
             window.localStorage.setItem('token',res.data.token)

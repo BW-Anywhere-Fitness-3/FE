@@ -49,12 +49,9 @@ class LoginInstructor extends React.Component{
  constructor(props){
     super(props)
         this.state={
-           cred:{
        username:'',
           password:'',
-    },
-          
- inpMsg1:'',
+          inpMsg1:'',
        
         }
 
@@ -62,7 +59,7 @@ class LoginInstructor extends React.Component{
 
     send2Login = (e) =>{
       e.preventDefault()
-      this.props.login('client',this.state.cred)
+      this.props.login('instructor',{username:this.state.username,password:this.state.password})
     }
 
 
@@ -72,8 +69,8 @@ isString1 = e =>{
     const val = e.target.value
 
         if(val.match(/[A-z]/i) ||
-        val.match(/[A-z]/i) &&
-        val.match(/[0-9]/)
+       ( val.match(/[A-z]/i) &&
+               val.match(/[0-9]/))
           ){
           this.setState({inpMsg1:'valid'})
         }else{
@@ -92,7 +89,7 @@ isString1 = e =>{
       <FormGroup  className='dov'>
         <Label htmlFor="username">UserName</Label>
         <Input type="text"
-       onChange={(e)=>this.setState({cred:{username:e.target.value}})}
+       onChange={(e)=>this.setState({username:e.target.value})}
          onBlur={this.isString1}
          name="username" id="username" placeholder="username" required/>
      <span>{this.state.inpMsg1}</span>
@@ -100,7 +97,7 @@ isString1 = e =>{
       <FormGroup  className='dov'>
         <Label htmlFor="password">Password</Label>
         <Input type="password"
-        onChange={(e)=>this.setState({cred:{password:e.target.value}})}
+        onChange={(e)=>this.setState({password:e.target.value})}
          name="password" id="password" placeholder="password " required/>
       </FormGroup>
      

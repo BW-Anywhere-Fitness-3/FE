@@ -15,13 +15,13 @@ export const getClasses = () => dispatch =>{
 		dispatch({type:FETCHING});
 const token = localStorage.getItem('token')
 
-		// axiosCall().get("https://fitnessanywheregroup3.herokuapp.com/api/classes/",token).then(classes=>{
-		// 		console.log('action to classes',classes.data)
-		// 		dispatch({type:GOTCLASSES, payload:classes.data})
-		// }).catch(err=>{
-		// 	console.log(err)
-		// 	dispatch({type:ERR,payload:err})
-		// })
+		axiosCall().get("https://fitnessanywheregroup3.herokuapp.com/api/classes/",token).then(classes=>{
+				console.log('action to classes',classes.data)
+				dispatch({type:GOTCLASSES, payload:classes.data})
+		}).catch(err=>{
+			console.log(err)
+			dispatch({type:ERR,payload:err})
+		})
 }
 
 
