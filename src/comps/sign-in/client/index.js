@@ -48,7 +48,7 @@ class LoginClient extends React.Component{
         this.state={
        username:'',
           password:'',
-         inpMsg1:'',
+         inpMsg1:''
        
         }
 

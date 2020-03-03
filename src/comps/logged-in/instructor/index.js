@@ -5,6 +5,9 @@ import showthem from '../../img/2.jpg'
 import informofequipment from '../../img/3.jpg'
 import CreateClass from './create-class/'
 import {connect} from 'react-redux'
+import {getClasses} from '../../../ReduxStore/action'
+import {LoginInstrucotrs,LoginClient} from '../../../ReduxStore/action'
+import {Alert} from 'reactstrap'
 
 const items = [
   {
@@ -33,13 +36,17 @@ src: anywhere,
 class Instructors extends Component {
 constructor(props){
   super(props)
+  this.state={
+      firstTimerMSg:''
+  }
 }
 
 
 
   componentDidMount(){//CDM START
-
-
+    console.log(this.props)
+    this.props.getClasses()
+    this.props.LoginInstrucotrs()
 
   }//CDM FINISH
 
@@ -47,34 +54,73 @@ constructor(props){
 
 
 
+componentDidUpdate(){
+  console.log('logged in intructor here',this.props)
 
+
+
+}
 
 
 
   render() {
     return (
-      <div className="">
-        <h1>Welcome Instructor</h1>
+      <div className="" onLoad={()=>{  if(this.props.firstLogin==='true'){
+    this.setState({firstTimerMSg:'read around to see what you can do since its your fist time.'})
+  }}}>
+
+
+
+       
 <div>
       <Card color='dark'>
         <CardBody>
-          <CardTitle>Card title</CardTitle>
-          <CardSubtitle>Card subtitle</CardSubtitle>
+          <CardTitle>{this.props.loginMessage && this.props.loginMessage}</CardTitle>
+          <CardSubtitle><h1>intructor Panel</h1></CardSubtitle>
         </CardBody>
-        <img width="100%" src="/assets/318x180.svg" alt="Card image cap" />
         <CardBody>
-          <CardText>Some quick example text to build on the card title and make up the bulk of the card's content.</CardText>
-          <CardLink href="#">Card Link</CardLink>
-          <CardLink href="#">Another Link</CardLink>
+          <CardText>
+            <h3>{this.state.firstTimerMSg}</h3>
+          </CardText>
         </CardBody>
       </Card>
     </div>
         <UncontrolledCarousel items={items} className='controlAnyway'/>
 
         <div>
-        <CreateClass buttonLabel='Create A Class Here' />
+        <CreateClass buttonLabel='Create A Class Here' classes={this.props.classes}/>
         </div>
+<div>
+<h1>MY CLASSES</h1>
+{
 
+  this.props.classes.map(aClass=>{
+    return(
+
+      <Alert color='dark' key={aClass.id}>
+      <h2>Class Name: {aClass.className}</h2>
+      <ul>
+      <li>Type: {aClass.type}</li>
+      <li>Location: {aClass.location}</li>
+      <li>Duration Time({aClass.durationMins}mins)</li>
+      <li>Intesity Level: {aClass.intesityLevel}</li>
+      <li>Start Time:<small> {aClass.startTime}</small></li>
+      </ul>
+      <div>
+      <label>Attendees</label>
+      <input type='number' value={aClass.attendees} disabled/>
+
+       <label>MaxAttendees</label>
+      <input type='number' value={aClass.maxAttendees} disabled/>
+      </div>
+      </Alert>
+
+      )
+  })
+}
+
+
+</div>
       </div>
     );
   }
@@ -83,11 +129,11 @@ constructor(props){
 
 const mapStateToProps = state =>{
   return {
-    ...state
+    ...state,
   }
 }
 
 export default connect(
   mapStateToProps,
-  {}
+  {getClasses,LoginInstrucotrs,LoginClient}
   )(Instructors);

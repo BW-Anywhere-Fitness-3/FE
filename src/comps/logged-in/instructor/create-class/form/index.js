@@ -1,9 +1,11 @@
 import React from 'react'
 import { Col, Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
 import axios from 'axios'
-
-
+import {useParams} from 'react-router-dom'
+import {axiosCall} from '../../../../axios/'
 let msg = false;
+
+
 
 class Formio extends React.Component{
   constructor(){
@@ -25,8 +27,8 @@ class Formio extends React.Component{
 
     createClass = obj =>{
       console.log(obj)
-      const withId = `https://fitnessanywheregroup3.herokuapp.com/api/classes/${new Date()}`
-      axios.post(withId,obj).then(
+      const withId = `/api/classes`
+      axiosCall().post(withId,obj).then(
         res=>{
           console.log(res)
         })
@@ -35,7 +37,7 @@ class Formio extends React.Component{
     send2cc = (e)=>{
       e.preventDefault()
           this.createClass(this.state)
-      // e.target.reset()
+      e.target.reset()
 
     }
 
@@ -64,11 +66,18 @@ class Formio extends React.Component{
          name="durationMins" id="durationMins" placeholder="Duration Minutes" />
       </FormGroup>
 
-          <FormGroup>
-        <Label htmlFor="intesityLevel">intesity Level:</Label>
-        <Input type="number"
-         onChange={(e)=>this.setState({intesityLevel:e.target.value})}
-         name="intesityLevel" min='0' id="intesityLevel" placeholder="intesity Level" />
+       <FormGroup row>
+        <Label htmlFor="intesityLevel" sm={2}>intesity Level:</Label>
+        <Col sm={10}>
+          <Input type="select"
+          onChange={(e)=>this.setState({intesityLevel:e.target.value})}
+           name="intesityLevel" id="intesityLevel">
+            <option>High</option>
+            <option>Med</option>
+            <option>Low</option>
+            <option>Starter</option>
+          </Input>
+        </Col>
       </FormGroup>
 
           <FormGroup>

@@ -1,10 +1,11 @@
-import React, { Component, useContext,useEffect } from 'react';
+import React, { Component, useState,useEffect } from 'react';
 import {Card,CardBody,Badge,CardTitle,CardImg,ListGroup, ListGroupItem ,Media,CardSubtitle,CardLink,CardText} from 'reactstrap'
-import SeeClassesBtn from './search/'
+import SearchClassesBtn from './search/'
 import {connect} from 'react-redux'
 import {LoggedContext} from '../../ContextHook/'
 import styled from 'styled-components'
 import testImg from '../../img/1.jpg'
+import {getClassesForClients} from '../../../ReduxStore/action'
 
 
 const Box = styled.div`
@@ -35,11 +36,14 @@ const Box = styled.div`
 
 const Client = (props)=> {
 
-
+const [classes,setClasses] = useState()
 
 useEffect(()=>{
 
-    console.log(props)
+
+      props.getClassesForClients()
+    console.log('in Clients while logged in',props)
+
 
 
 },[])
@@ -49,7 +53,8 @@ useEffect(()=>{
 
 
     return (
-      <div className="user-logged-in-page">
+        
+      <div className="user-logged-in-page" onLoad={()=> setClasses([props.classes])}>
       
 
          <div className='profileCardHolder'>
@@ -61,7 +66,7 @@ useEffect(()=>{
           <CardTitle>{'welcomeMsg'}</CardTitle>
           <CardText>This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</CardText>
           <CardText>
-            <small className="text-muted">Last updated 3 mins ago</small>
+            <small className="text-muted"></small>
           </CardText>
         </CardBody>
         <CardImg bottom width="100%" src="/assets/318x180.svg" alt="Card image cap" />
@@ -71,89 +76,66 @@ useEffect(()=>{
     </div>
 
     <div>
-    	<SeeClassesBtn buttonLabel='Search For Classes'  className='dark'/>
+    	<SearchClassesBtn buttonLabel='Search For Classes' allAlasses={props.classes}  className='dark'/>
     </div>
 
     		  <Box>
- <Media className='classCard'>
+
+          {
+
+            props.classes.map(aClass=>{
+    return(
+ <Media className='classCard'  key={aClass.id}>
+      <h2></h2>
         <Media left top href="#">
           <Media  object src={testImg} alt="thumbnail of video" style={{width:'100%',height:'100%'}} />
         </Media>
         <Media body>
           <Media heading>
-           <Badge color="danger"> Name of Class </Badge>
+           <Badge color="danger">Class Name: {aClass.className} </Badge>
           </Media>
             <ListGroup className='modalx'>
-      <ListGroupItem>duration: 23min</ListGroupItem>
-      <ListGroupItem>type: dance</ListGroupItem>
-      <ListGroupItem>start time: 12pm</ListGroupItem>
-      <ListGroupItem>location: Maryland</ListGroupItem>
-      <ListGroupItem>intensity level: 80%</ListGroupItem>
-      <ListGroupItem>attendees: 31</ListGroupItem>
-      <ListGroupItem>max attendees: 50</ListGroupItem>
+      <ListGroupItem>Type: {aClass.type}</ListGroupItem>
+      <ListGroupItem>Location: {aClass.location}</ListGroupItem>
+      <ListGroupItem>Duration Time({aClass.durationMins}mins)</ListGroupItem>
+      <ListGroupItem>Intesity Level: {aClass.intesityLevel}</ListGroupItem>
+      <ListGroupItem>Start Time:<small> {aClass.startTime}</small></ListGroupItem>
     </ListGroup>
+     <div>
+      <label>Attendees</label>
+      <input type='number' value={aClass.attendees} disabled/>
 
+       <label>MaxAttendees</label>
+      <input type='number' value={aClass.maxAttendees} disabled/>
+      </div>
         </Media>
       </Media>
+      )
+  })
+
+          }
 
 
 
 
 
 
-
-
- <Media className='classCard'>
-        <Media left top href="#">
-          <Media  object src={testImg} alt="thumbnail of video" style={{width:'100%',height:'100%'}} />
-        </Media>
-        <Media body>
-          <Media heading>
-           <Badge color="danger"> Name of Class </Badge>
-          </Media>
-            <ListGroup className='modalx'>
-      <ListGroupItem>duration: 23min</ListGroupItem>
-      <ListGroupItem>type: dance</ListGroupItem>
-      <ListGroupItem>start time: 12pm</ListGroupItem>
-      <ListGroupItem>location: Maryland</ListGroupItem>
-      <ListGroupItem>intensity level: 80%</ListGroupItem>
-      <ListGroupItem>attendees: 31</ListGroupItem>
-      <ListGroupItem>max attendees: 50</ListGroupItem>
-    </ListGroup>
-    
-        </Media>
-      </Media>
-
-
-
-
-
-       <Media className='classCard'>
-        <Media left top href="#">
-          <Media  object src={testImg} alt="thumbnail of video" style={{width:'100%',height:'100%'}} />
-        </Media>
-        <Media body>
-          <Media heading>
-           <Badge color="danger"> Name of Class </Badge>
-          </Media>
-            <ListGroup className='modalx'>
-      <ListGroupItem>duration: 23min</ListGroupItem>
-      <ListGroupItem>type: dance</ListGroupItem>
-      <ListGroupItem>start time: 12pm</ListGroupItem>
-      <ListGroupItem>location: Maryland</ListGroupItem>
-      <ListGroupItem>intensity level: 80%</ListGroupItem>
-      <ListGroupItem>attendees: 31</ListGroupItem>
-      <ListGroupItem>max attendees: 50</ListGroupItem>
-    </ListGroup>
-    
-        </Media>
-      </Media>
       </Box>
       </div>
 
     );
 }
+  
+
+  const mapStateToProps = state =>{
+    return {
+      ...state,
+    }
+  }
 
 
+export default connect(
+  mapStateToProps,
+{getClassesForClients}
 
-export default Client
+  )(Client)

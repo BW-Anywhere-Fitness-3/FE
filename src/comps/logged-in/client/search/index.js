@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 import Classes from './Classes'
-
+import {connect} from 'react-redux'
 
 const ModalExample = (props) => {
   const {
@@ -30,10 +30,10 @@ const ModalExample = (props) => {
 
 <Button color="danger" onClick={toggle}>{buttonLabel}</Button>
       <Modal isOpen={modal} modalTransition={{ timeout: 700 }} backdropTransition={{ timeout: 1300 }}
-        toggle={toggle} className={className}>
+        toggle={toggle}>
         <ModalHeader toggle={toggle}>Modal title</ModalHeader>
         <ModalBody>
-            <Classes />
+            <Classes classes={props.allClasses}/>
         </ModalBody>
         <ModalFooter>
           <Button color="danger" onClick={toggle}>Cancel</Button>
@@ -50,4 +50,12 @@ const ModalExample = (props) => {
   );
 }
 
-export default ModalExample;
+
+const mapStateToProps = state =>{
+  return {
+    ...state,
+  }
+}
+export default connect(
+  mapStateToProps,
+  )(ModalExample);

@@ -4,13 +4,14 @@ import {Button,Container,Media} from 'reactstrap'
 import {connect} from 'react-redux'
 import axios from 'axios'
 import {getClasses} from '../../../../ReduxStore/action'
-
-
+import ShowPickedClass from './showPickedClass/'
+ 
 class ClassesList extends Component {
   constructor(props){
     super(props)
     this.state={
-      classes:[]
+      pickedClass:'',
+
     } 
   }
 
@@ -21,15 +22,9 @@ class ClassesList extends Component {
 
 const token = localStorage.getItem('token')
 
-    // axios.get("https://fitnessanywheregroup3.herokuapp.com/api/classes/").then(classes=>{
-    //     console.log('action to classes',classes.data)
-    //     this.setState({
-    //       classes:classes.data
-    //     })
-    // }).catch(err=>{
-    //   console.log(err)
-    // })
+  
     
+    console.log(this.props)
 
 
   }//CDM FINISH
@@ -47,23 +42,25 @@ componentDidUpdate(){
 
 
 
+
   render() {
     return (
       <div className="modalx">
 
 
-        <input list='classes'/>
+        <input list='classes' onChange={(e)=>this.setState({pickedClass:e.target.value})}/>
 
         <datalist id='classes'>
-        <option  value='fffrfrf'/>
-        <option  value='fffrfrf'/>
-        <option  value='fffrfrf'/>
-        <option  value='fffrfrf'/>
-        <option  value='fffrfrf'/>
-        <option  value='fffrfrf'/>
-        <option  value='fffrfrf'/>
+
+        {
+          this.props.classes.map(aClass=>{
+              return(
+                <option  value={aClass.className} key={aClass.id}/>
+                )
+          })
+        }
         </datalist>
-      
+      <ShowPickedClass classes={this.props.classes} classPicked={this.state.pickedClass} buttonLabel='Show Picked Class'/>
       </div>
     );
   }

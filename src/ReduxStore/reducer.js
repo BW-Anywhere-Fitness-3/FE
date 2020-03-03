@@ -1,4 +1,4 @@
-import {GOTCLASSES,FETCHING,ERR,GOTTOKEN} from './action'
+import {GOTCLASSES,FETCHING,ERR,GOTTOKEN,FIRSTTIME,MSG} from './action'
 
 
 const initialState={
@@ -25,6 +25,19 @@ const reducer = (state = initialState, action) =>{
 					classes:action.payload,
 				}
 
+
+				case FIRSTTIME:
+				return {
+					...state,
+					firstLogin:action.payload,
+				}
+
+
+				case MSG:
+				return {
+					...state,
+					loginMessage:action.payload,
+				}
 
 				case ERR:
 				return {

@@ -49,9 +49,9 @@ class LoginInstructor extends React.Component{
  constructor(props){
     super(props)
         this.state={
-       username:'',
+         username:'',
           password:'',
-          inpMsg1:'',
+          inpMsg1:''
        
         }
 

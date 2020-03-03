@@ -5,7 +5,6 @@ import Intructor from './instructor/'
 import {Button} from 'reactstrap'
 import axios from 'axios'
 import {connect} from 'react-redux'
-import {LoginInstrucotrs,LoginClient} from '../../ReduxStore/action'
 import {axiosCall} from '../axios/'
 import {LoggedContext} from '../ContextHook/'
  
@@ -26,25 +25,18 @@ const loginHandle = (who,obj) =>{
 
 
 
-
-
-
-
-
-
-
-
             switch(who){
+
               case 'instructor':
-               const logz  = async () => {
-                      try{
-                       await   axiosCall().post('/api/instructors/login/',obj)
+              console.log(who,obj)
+
+
+     return   axios.post('https://fitnessanywheregroup3.herokuapp.com/api/instructors/login',obj)
              .then(res=>{
           console.log('logging in....',res)
-            window.localStorage.setItem('token',res.data.token)
-                setisFirtLogin(res.data.isFirtLogin)
-                setwelcomeMsg(res.data.message)
-              LoginClient()
+            localStorage.setItem('token',res.data.token)
+            localStorage.setItem('firstTime',res.data.isFirstLogin)
+            localStorage.setItem('msg',res.data.message)
 
         })
              .catch(err=>console.log(err))
@@ -52,33 +44,28 @@ const loginHandle = (who,obj) =>{
             props.history.push('/logged-instructor')
 
         })
-                      }
-
-                      catch(err){
-                        throw Error(err)
-                      }
-            }
-
-
-            logz()
-        break;
+                     
         case 'client':
-       axiosCall().post('/api/clients/login/',obj)
+              console.log(who,obj)
+
+
+     return  axios.post('https://fitnessanywheregroup3.herokuapp.com/api/clients/login',obj)
          .then(res=>{
           console.log('logging in....',res)
-            window.localStorage.setItem('token',res.data.token)
+            localStorage.setItem('token',res.data.token)
              setisFirtLogin(res.data.isFirtLogin)
                 setwelcomeMsg(res.data.message)
-              LoginClient()
         })
          .catch(err=>console.log(err))
          .finally(done=> {
           props.history.push('/logged-client')
         })
 
-        break;
-        console.log(obj)
       }
+
+
+
+
 
   }
 
