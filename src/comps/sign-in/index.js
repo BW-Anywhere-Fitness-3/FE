@@ -1,29 +1,28 @@
 import React, {useState,useEffect} from 'react';
-import {NavLink,Route,Switch} from 'react-router-dom'
+import {NavLink,Route,Switch,useHistory} from 'react-router-dom'
 import Client from './client/'
 import Intructor from './instructor/'
 import {Button} from 'reactstrap'
 import axios from 'axios'
 import {connect} from 'react-redux'
 import {axiosCall} from '../axios/'
-import {LoggedContext} from '../ContextHook/'
+import {getClasses} from '../../ReduxStore/action'
  
 
 
-
+  
 const Forms = (props) => {
 
 
-  console.log('form',props)
         const [isFirtLogin,setisFirtLogin] = useState( )
         const [welcomeMsg,setwelcomeMsg] = useState( )
+        const history = useHistory()
+  console.log('form',props,history)
 
 const loginHandle = (who,obj) =>{
 
 
-
-
-
+     
 
             switch(who){
 
@@ -34,16 +33,19 @@ const loginHandle = (who,obj) =>{
      return   axios.post('https://fitnessanywheregroup3.herokuapp.com/api/instructors/login',obj)
              .then(res=>{
           console.log('logging in....',res)
-            localStorage.setItem('token',res.data.token)
-            localStorage.setItem('firstTime',res.data.isFirstLogin)
-            localStorage.setItem('msg',res.data.message)
+                     localStorage.setItem('token',res.data.token)
+                     setisFirtLogin(res.data.isFirtLogin)
+                     setwelcomeMsg(res.data.message)
+                     props.loginn()
+                     history.push('/logged-instructor')
 
+            // localStorage.setItem('token',res.data.token)
+            // localStorage.setItem('firstTime',res.data.isFirstLogin)
+            // localStorage.setItem('msg',res.data.message)
+            //  props.loginn()
+            // props.history.push('/logged-instructor')
         })
              .catch(err=>console.log(err))
-             .finally(done=>{
-            props.history.push('/logged-instructor')
-
-        })
                      
         case 'client':
               console.log(who,obj)
@@ -52,14 +54,20 @@ const loginHandle = (who,obj) =>{
      return  axios.post('https://fitnessanywheregroup3.herokuapp.com/api/instructors/login',obj)
          .then(res=>{
           console.log('logging in....',res)
-            localStorage.setItem('token',res.data.token)
-             setisFirtLogin(res.data.isFirtLogin)
-                setwelcomeMsg(res.data.message)
+
+                     localStorage.setItem('token',res.data.token)
+                     setisFirtLogin(res.data.isFirtLogin)
+                     setwelcomeMsg(res.data.message)
+                     props.loginn()
+                     history.push('/logged-client')
+            
+             
+                
+            
+          
+
         })
-         .catch(err=>console.log(err))
-         .finally(done=> {
-          props.history.push('/logged-client')
-        })
+         .catch(err=>confirm('sorry please try again, we dont recognize those credentials',err))
 
       }
 
@@ -68,6 +76,16 @@ const loginHandle = (who,obj) =>{
 
 
   }
+
+
+
+
+
+
+
+  useEffect(()=>{
+
+  })
 
   return (
     <div>
@@ -99,5 +117,5 @@ const mapStateToProps = state =>{
     
 export default connect(
   mapStateToProps,
-    {}
+    {getClasses,useHistory}
   )(Forms);

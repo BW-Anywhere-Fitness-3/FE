@@ -63,17 +63,21 @@ logoutBtn = () =>{
 }
 
 
+logIn = () =>{
+    this.setState({loggedOrNot:true,btnText:'Logout'})
+}
+
 
   render() {
     return (
       <div className="App">
-      <Header  usersState={this.state.btnText} logout={this.logoutBtn}/>
+      <Header  usersState={this.state.btnText} logout={this.logoutBtn} />
       <Container>
 <Switch>
 
 <PrivateRoute exact path='/logged-client' component={LoggedClient} />
 <PrivateRoute exact path='/logged-instructor' component={LoggedInstructor} />
-<Route path='/forms/login' component={Login}/>
+<Route path='/forms/login' render={()=><Login loginn={this.logIn}/>}/>
 <Route path='/forms/register' component={Register}/>
 
 
