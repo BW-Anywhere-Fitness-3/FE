@@ -14,6 +14,11 @@ import {getClasses} from './ReduxStore/action'
 import axios from 'axios'
 
 
+
+const reg = {fontWeight:'bolder',fontSize:'1.3rem',WebkitTextFillColor:'#000',color:"#000",border:'double .5px #FF0400'}
+const log = {fontWeight:'bolder',fontSize:'1.3rem',border:'#FF0400',border:'double .5px #FF0400'}
+
+  
 class App extends Component {
   constructor(props){
     super(props)
@@ -91,9 +96,9 @@ logIn = () =>{
 <h1>Please Login or Register</h1>
 <div>
 
-<NavLink to='/forms/login/'><Button color='success'>Login</Button></NavLink>
+<NavLink to='/forms/login/'><Button color='dark' style={log}>Login</Button></NavLink>
 {'   '}
-<NavLink to='/forms/register/'><Button color='primary'>Register</Button></NavLink>
+<NavLink to='/forms/register/'><Button color='light' style={reg}>Register</Button></NavLink>
 </div>
 </div>
   )} />

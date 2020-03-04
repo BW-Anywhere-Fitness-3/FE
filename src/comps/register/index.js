@@ -23,6 +23,29 @@ grid-gap:100px;
   box-shadow:0 0 10px #000;
   border-bottom:4px solid #1F1F1F;
   border-top:2px solid #FF0400;
+
+
+
+
+
+
+  
+      input{
+        background-color:#1F1F1F;
+        border:double .5px #FF0400;
+         -webkit-text-fill-color:azure;
+        color:azure;
+        border-radius:5px;
+      }
+
+
+         input:focus{
+        background-color:#1F1F1F;
+        border:double .5px #FF0400;
+         -webkit-text-fill-color:azure;
+        color:azure;
+        border-radius:5px;
+      }
   }
 
  `;
@@ -32,6 +55,10 @@ grid-gap:100px;
 
 
 
+const insBtn = {fontWeight:'bolder',fontSize:'1.3rem',WebkitTextFillColor:'#000',color:"#000",border:'double .5px #FF0400'}
+const cliBtn = {fontWeight:'bolder',fontSize:'1.3rem',border:'#FF0400',border:'double .5px #FF0400'}
+
+  
 
 
 const Forms = (props) => {
@@ -65,9 +92,9 @@ const Forms = (props) => {
     <div>
       <h1>Register as</h1>
 
-      <NavLink to='/forms/register/'><Button color='success'  style={{fontWeight:'bolder',fontSize:'1.3rem'}}>Client</Button></NavLink>
+      <NavLink to='/forms/register/'><Button color='success'  style={cliBtn}>Client</Button></NavLink>
       {'     '}
-      <NavLink to='/forms/register/as-instructor'><Button color='primary'  style={{fontWeight:'bolder',fontSize:'1.3rem'}}>Instructor</Button></NavLink>
+      <NavLink to='/forms/register/as-instructor'><Button color='primary'  style={insBtn}>Instructor</Button></NavLink>
       
       
     </div>
