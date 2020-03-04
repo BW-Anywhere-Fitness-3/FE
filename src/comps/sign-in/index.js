@@ -3,11 +3,32 @@ import {NavLink,Route,Switch,useHistory} from 'react-router-dom'
 import Client from './client/'
 import Intructor from './instructor/'
 import {Button} from 'reactstrap'
+import styled from 'styled-components'
 import axios from 'axios'
 import {connect} from 'react-redux'
 import {axiosCall} from '../axios/'
 import {getClasses} from '../../ReduxStore/action'
- 
+ const Container = styled.div`
+flex:1;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+grid-gap:100px;
+
+
+  form{
+  background-color:#3A3A3C;
+  width:500px;
+  border-radius:20px;
+  padding:50px;
+  font-weight:bolder;
+  box-shadow:0 0 10px #000;
+  border-bottom:4px solid #1F1F1F;
+  border-top:2px solid #FF0400;
+  }
+
+ `;
 
 
   
@@ -88,7 +109,7 @@ const loginHandle = (who,obj) =>{
   })
 
   return (
-    <div>
+    <Container>
     <div>
      <h1>Login as</h1>
 
@@ -103,7 +124,7 @@ const loginHandle = (who,obj) =>{
     <Route exact path='/forms/login/as-instructor' render={()=><Intructor login={loginHandle} />} />
     </Switch>
 
-    </div>
+    </Container>
   );
 }
 
