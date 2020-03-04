@@ -7,7 +7,6 @@ import styled from 'styled-components'
 import testImg from '../../img/1.jpg'
 import {getClasses} from '../../../ReduxStore/action'
 
-
 const Box = styled.div`
   flex:1;
   display:flex;
@@ -86,7 +85,7 @@ useEffect(()=>{
 
            props.classes && props.classes.map(aClass=>{
     return(
- <Media className='classCard'  key={aClass.id}>
+ <Media className='classCard modalx'  key={aClass.id}>
       <h2></h2>
         <Media left top href="#">
           <Media  object src={testImg} alt="thumbnail of video" style={{width:'100%',height:'100%'}} />
@@ -102,12 +101,9 @@ useEffect(()=>{
       <ListGroupItem>Intesity Level: {aClass.intesityLevel}</ListGroupItem>
       <ListGroupItem>Start Time:<small> {aClass.startTime}</small></ListGroupItem>
     </ListGroup>
-     <div>
-      <label>Attendees</label>
-      <input type='number' value={aClass.attendees} disabled/>
-
-       <label>MaxAttendees</label>
-      <input type='number' value={aClass.maxAttendees} disabled/>
+     <div className='modalx'>
+     <ListGroupItem className="justify-content-between">Attendees<Badge pill>{aClass.attendees}</Badge></ListGroupItem>
+<ListGroupItem className="justify-content-between">Max Attendees<Badge pill>{aClass.maxAttendees}</Badge></ListGroupItem>
       </div>
         </Media>
       </Media>

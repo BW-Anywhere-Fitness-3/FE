@@ -11,7 +11,7 @@ class Formio extends React.Component{
   constructor(){
   super()
   this.state={
-    workoutName:'',
+    className:'',
     type:'',
     durationMins:'',
     intesityLevel:'',
@@ -38,7 +38,8 @@ class Formio extends React.Component{
       e.preventDefault()
           this.createClass(this.state)
       e.target.reset()
-
+      this.props.toggle()
+      this.props.refreshClass()
     }
 
 
@@ -48,10 +49,10 @@ class Formio extends React.Component{
     <Form onSubmit={this.send2cc}>
           <h2>Creator Mode</h2>
      <FormGroup>
-        <Label htmlFor="workoutName">Class Name:</Label>
+        <Label htmlFor="className">Class Name:</Label>
         <Input type="text"
-         onChange={(e)=>this.setState({workoutName:e.target.value})}
-         name="workoutName" id="workoutName" placeholder="Class Name" />
+         onChange={(e)=>this.setState({className:e.target.value})}
+         name="className" id="className" placeholder="Class Name" />
       </FormGroup>
       <FormGroup>
         <Label htmlFor="location">Location:</Label>

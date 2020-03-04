@@ -7,7 +7,7 @@ import CreateClass from './create-class/'
 import {connect} from 'react-redux'
 import {getClasses} from '../../../ReduxStore/action'
 import {LoginInstrucotrs,LoginClient} from '../../../ReduxStore/action'
-import {Alert} from 'reactstrap'
+import {Alert,Badge,ListGroupItem} from 'reactstrap'
 
 const items = [
   {
@@ -39,6 +39,9 @@ constructor(props){
   this.state={
       firstTimerMSg:''
   }
+
+
+ 
 }
 
 
@@ -60,6 +63,11 @@ componentDidUpdate(){
 
 
 }
+
+
+ refreshClass=()=>{
+    this.props.getClasses()
+  }
 
 
 
@@ -88,16 +96,16 @@ componentDidUpdate(){
         <UncontrolledCarousel items={items} className='controlAnyway'/>
 
         <div>
-        <CreateClass buttonLabel='Create A Class Here' classes={this.props.classes}/>
+        <CreateClass buttonLabel='Create A Class Here' refreshClass={this.refreshClass} classes={this.props.classes}/>
         </div>
 <div>
-<h1>MY CLASSES</h1>
+<h1>CLASS FEED</h1>
 {
 
   this.props.classes.map(aClass=>{
     return(
 
-      <Alert color='dark' key={aClass.id}>
+      <Alert color='dark' key={aClass.id} className='modalx'>
       <h2>Class Name: {aClass.className}</h2>
       <ul>
       <li>Type: {aClass.type}</li>
@@ -106,12 +114,9 @@ componentDidUpdate(){
       <li>Intesity Level: {aClass.intesityLevel}</li>
       <li>Start Time:<small> {aClass.startTime}</small></li>
       </ul>
-      <div>
-      <label>Attendees</label>
-      <input type='number' value={aClass.attendees} disabled/>
-
-       <label>MaxAttendees</label>
-      <input type='number' value={aClass.maxAttendees} disabled/>
+      <div className='modalx'>
+<ListGroupItem className="justify-content-between">Attendees<Badge pill>{aClass.attendees}</Badge></ListGroupItem>
+<ListGroupItem className="justify-content-between">Max Attendees<Badge pill>{aClass.maxAttendees}</Badge></ListGroupItem>
       </div>
       </Alert>
 

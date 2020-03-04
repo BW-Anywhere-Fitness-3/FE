@@ -19,7 +19,7 @@ const ModalExample = (props) => {
         toggle={toggle}  className='modalx'>
         <ModalHeader toggle={toggle}>CREATE A CLASS</ModalHeader>
         <ModalBody>
-        <Form />
+        <Form toggle={toggle} refreshClass={props.refreshClass}/>
         </ModalBody>
         <ModalFooter className='modalx'>
           <Button color="danger" onClick={toggle}>Cancel</Button>
