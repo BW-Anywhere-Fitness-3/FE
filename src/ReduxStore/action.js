@@ -18,6 +18,7 @@ export const getClasses = () => dispatch =>{
 
 		axiosCall().get("/api/classes").then(classes=>{
 				console.log('action to classes',classes.data)
+				localStorage.setItem("classes",JSON.stringify(classes.data))
 				dispatch({type:GOTCLASSES, payload:classes.data})
 		}).catch(err=>{
 			console.log(err)
@@ -26,12 +27,11 @@ export const getClasses = () => dispatch =>{
 }
 
 const axiosCallCli = () =>{
-		const token = `eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWJqZWN0IjoxMCwidXNlcm5hbWUiOiJidWciLCJyb2xlIjoiaW5zdHJ1Y3RvciIsImlhdCI6MTU4MzI2MzkwOSwiZXhwIjoxNTgzMjY3NTA5fQ.tKScilSA-ciE5mwAB3MCzcqx8HkCRsHzWKZRvreD_bU
-`
+		const token = JSON.parse(localStorage.getItem("classes"))
 			console.log(token)
 		return axios.create({
 				headers:{
-					"authorization":`${token}`
+					"Authorization":`${token}`
 				},
 			baseURL:'https://fitnessanywheregroup3.herokuapp.com'
 		})

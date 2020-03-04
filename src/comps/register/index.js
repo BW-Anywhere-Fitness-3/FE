@@ -25,7 +25,7 @@ const Forms = (props) => {
         }).catch(err=>console.log(err))
         break;
         case 'client':
-          axios.post('https://fitnessanywheregroup3.herokuapp.com/api/clients/register',obj).then(res=>{
+          axios.post('https://fitnessanywheregroup3.herokuapp.com/api/instructors/register',obj).then(res=>{
           console.log(res)
             props.history.push('/fomrs/login')
 

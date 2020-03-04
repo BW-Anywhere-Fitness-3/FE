@@ -5,7 +5,7 @@ import {connect} from 'react-redux'
 import {LoggedContext} from '../../ContextHook/'
 import styled from 'styled-components'
 import testImg from '../../img/1.jpg'
-import {getClassesForClients} from '../../../ReduxStore/action'
+import {getClasses} from '../../../ReduxStore/action'
 
 
 const Box = styled.div`
@@ -30,7 +30,7 @@ const Box = styled.div`
 `;
 
 
-
+ 
 
 
 
@@ -41,10 +41,10 @@ const [classes,setClasses] = useState()
 useEffect(()=>{
 
 
-      props.getClassesForClients()
+      props.getClasses()
     console.log('in Clients while logged in',props)
 
-
+    setClasses(props.classes)
 
 },[])
 
@@ -54,7 +54,7 @@ useEffect(()=>{
 
     return (
         
-      <div className="user-logged-in-page" onLoad={()=> setClasses([props.classes])}>
+      <div className="user-logged-in-page">
       
 
          <div className='profileCardHolder'>
@@ -76,14 +76,15 @@ useEffect(()=>{
     </div>
 
     <div>
-    	<SearchClassesBtn buttonLabel='Search For Classes' allAlasses={props.classes}  className='dark'/>
+    	<SearchClassesBtn buttonLabel='Search For Classes'
+       copyOfClasses={props.classes}  className='dark'/>
     </div>
 
     		  <Box>
 
           {
 
-            props.classes.map(aClass=>{
+           props.classes && props.classes.map(aClass=>{
     return(
  <Media className='classCard'  key={aClass.id}>
       <h2></h2>
@@ -136,6 +137,6 @@ useEffect(()=>{
 
 export default connect(
   mapStateToProps,
-{getClassesForClients}
+{getClasses}
 
   )(Client)

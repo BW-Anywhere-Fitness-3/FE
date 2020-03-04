@@ -49,7 +49,7 @@ const loginHandle = (who,obj) =>{
               console.log(who,obj)
 
 
-     return  axios.post('https://fitnessanywheregroup3.herokuapp.com/api/clients/login',obj)
+     return  axios.post('https://fitnessanywheregroup3.herokuapp.com/api/instructors/login',obj)
          .then(res=>{
           console.log('logging in....',res)
             localStorage.setItem('token',res.data.token)

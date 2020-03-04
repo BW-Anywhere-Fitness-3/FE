@@ -1,9 +1,10 @@
 /* eslint react/no-multi-comp: 0, react/prop-types: 0 */
 
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 import Classes from './Classes'
 import {connect} from 'react-redux'
+import {getClassesForClients} from '../../../../ReduxStore/action'
 
 const ModalExample = (props) => {
   const {
@@ -14,6 +15,7 @@ const ModalExample = (props) => {
   const [modal, setModal] = useState(false);
   const [nestedModal, setNestedModal] = useState(false);
   const [closeAll, setCloseAll] = useState(false);
+  const [classes, setClasses] = useState(false);
 
   const toggle = () => setModal(!modal);
   const toggleNested = () => {
@@ -25,6 +27,20 @@ const ModalExample = (props) => {
     setCloseAll(true);
   }
 
+
+  useEffect(()=>{
+
+props.getClassesForClients()
+
+setClasses(props.copyOfClasses)
+
+
+
+
+
+
+  },[])
+
   return (
     <div>
 
@@ -33,7 +49,7 @@ const ModalExample = (props) => {
         toggle={toggle}>
         <ModalHeader toggle={toggle}>Modal title</ModalHeader>
         <ModalBody>
-            <Classes classes={props.allClasses}/>
+            <Classes copyOfClasses={props.copyOfClasses}/>
         </ModalBody>
         <ModalFooter>
           <Button color="danger" onClick={toggle}>Cancel</Button>
@@ -58,4 +74,5 @@ const mapStateToProps = state =>{
 }
 export default connect(
   mapStateToProps,
+  {getClassesForClients}
   )(ModalExample);
