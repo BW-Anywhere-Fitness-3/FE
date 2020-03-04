@@ -8,7 +8,7 @@ THIS AXIOS HOOK IS TO BE USED FOR
 
 export const axiosCall = () =>{
 		const token = localStorage.getItem('token')
-			console.log(token)
+			console.log('axios hook checking token:',token)
 		return axios.create({
 				headers:{
 					"authorization":`${token}`

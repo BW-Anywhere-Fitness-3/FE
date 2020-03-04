@@ -97,19 +97,18 @@ const Forms = (props) => {
       switch(who){
         case 'instructor':
         axios.post('https://fitnessanywheregroup3.herokuapp.com/api/instructors/register',obj).then(res=>{
-          console.log(res)
+          console.log('registering data given back',res)
             props.history.push('/fomrs/login')
 
-        }).catch(err=>console.log(err))
+        }).catch(err=>console.log('registering error',err))
         break;
         case 'client':
           axios.post('https://fitnessanywheregroup3.herokuapp.com/api/instructors/register',obj).then(res=>{
-          console.log(res)
+          console.log('registering data given back',res)
             props.history.push('/fomrs/login')
 
-        }).catch(err=>console.log(err))
+        }).catch(err=>console.log('registering error',err))
         break;
-        console.log(obj)
       }
 
 

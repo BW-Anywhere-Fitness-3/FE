@@ -20,30 +20,30 @@ const Box = styled.div`
 
     .classCard{
       flex:1;
-      background-color:rgba(250,250,250,.7);
+      background-color: #3A3A3C;
       padding:50px;
-      border:double 3px red;
-
+      border-top: 2px solid #FF0400;
+      border-bottom: 4px solid #1F1F1F;
+      box-shadow:0 0 10px;
+      border-radius:20px;
     }
 
 `;
 
 
- 
+ const classCardImgs = {boxShadow:'0 0 5px #000',width:'100%',height:'100%',border:'double #FF0400',borderRadius:'10px'}
 
 
 
 const Client = (props)=> {
 
-const [classes,setClasses] = useState()
 
 useEffect(()=>{
 
 
       props.getClasses()
-    console.log('in Clients while logged in',props)
+    console.log('logged in Client here props, ',props)
 
-    setClasses(props.classes)
 
 },[])
 
@@ -68,7 +68,6 @@ useEffect(()=>{
             <small className="text-muted"></small>
           </CardText>
         </CardBody>
-        <CardImg bottom width="100%" src="/assets/318x180.svg" alt="Card image cap" />
       </Card>
     </div>
 
@@ -88,22 +87,22 @@ useEffect(()=>{
  <Media className='classCard modalx'  key={aClass.id}>
       <h2></h2>
         <Media left top href="#">
-          <Media  object src={testImg} alt="thumbnail of video" style={{width:'100%',height:'100%'}} />
+          <Media  object src={testImg} alt="thumbnail of video" style={classCardImgs} />
         </Media>
         <Media body>
           <Media heading>
-           <Badge color="danger">Class Name: {aClass.className} </Badge>
+           <Badge color="danger" style={{fontWeight:'bolder'}}>Class: {aClass.className} </Badge>
           </Media>
             <ListGroup className='modalx'>
       <ListGroupItem>Type: {aClass.type}</ListGroupItem>
       <ListGroupItem>Location: {aClass.location}</ListGroupItem>
-      <ListGroupItem>Duration Time({aClass.durationMins}mins)</ListGroupItem>
-      <ListGroupItem>Intesity Level: {aClass.intesityLevel}</ListGroupItem>
-      <ListGroupItem>Start Time:<small> {aClass.startTime}</small></ListGroupItem>
+      <ListGroupItem><i className='far fa-clock'></i>{aClass.durationMins}mins<i className='far fa-clock'></i></ListGroupItem>
+      <ListGroupItem>Intesity Level<i className='fas fa-heartbeat'></i>: {aClass.intesityLevel}</ListGroupItem>
+      <ListGroupItem>Start Time:<br /><small style={{color:'blue',WebkitTextFillColor:'blue'}}> {aClass.startTime}</small></ListGroupItem>
     </ListGroup>
      <div className='modalx'>
-     <ListGroupItem className="justify-content-between">Attendees<Badge pill>{aClass.attendees}</Badge></ListGroupItem>
-<ListGroupItem className="justify-content-between">Max Attendees<Badge pill>{aClass.maxAttendees}</Badge></ListGroupItem>
+     <ListGroupItem className="justify-content-between">Attendees<Badge pill color='success'>{aClass.attendees}</Badge></ListGroupItem>
+<ListGroupItem className="justify-content-between">Max Attendees<Badge pill color='danger'>{aClass.maxAttendees}</Badge></ListGroupItem>
       </div>
         </Media>
       </Media>

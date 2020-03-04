@@ -4,6 +4,7 @@ import {NavLink,Switch,Route} from 'react-router-dom'
 import {PrivateRoute} from './comps/private-router/'
 import {Button,Container} from 'reactstrap'
 import {connect} from 'react-redux'
+import {logoutBtnState, loginBtnState} from './ReduxStore/action'
 
 import Header from './header/'
 import Login from './comps/sign-in/'
@@ -33,43 +34,23 @@ class App extends Component {
 
   componentDidMount(){//CDM START
 
-this.props.getClasses()
-
-    if(window.localStorage.getItem('token'))//start of header button scheme
-
-      /*do this: change state to know user is logged
-       in and change button in header to a logout button*/ 
-   {this.setState({ loggedOrNot:true, btnText:'Logout'})}
-
-
-    /*if not then do this: change state to know no one is logged
-       in and change button in header to a login or register button*/ 
-      else{this.setState({loggedOrNot:false,btnText:'Login/Register'})}
-    //end of header button scheme
-
+  console.log('App component updating props and state',this.props,this.state)
 
   }//CDM FINISH
 
 
 
-
-
-componentDidUpdate(){
-// console.log(this.props)
-
-
-
-}
-
-
 logoutBtn = () =>{
-    this.setState({loggedOrNot:false,btnText:'Login/Register'})
-    window.localStorage.clear()
+    this.props.loginBtnState()
+    this.setState({loggedOrNot:false,btnText:this.props.headerLogBtn})
+    
+
 }
 
 
 logIn = () =>{
-    this.setState({loggedOrNot:true,btnText:'Logout'})
+    this.props.logoutBtnState()
+    this.setState({loggedOrNot:true,btnText:this.props.headerLogBtn})
 }
 
 
@@ -127,6 +108,6 @@ const mapStateToProps = state =>{
 
 export default connect(
     mapStateToProps,
-    {getClasses}
+    {logoutBtnState, loginBtnState}
 
   )(App);

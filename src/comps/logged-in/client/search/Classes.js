@@ -33,11 +33,6 @@ this.setState({classes:this.props.copyOfClasses})
 
 
 
-componentDidUpdate(){
-// console.log(this.props)
-
-
-}
 
 
 classChoice = cl =>{

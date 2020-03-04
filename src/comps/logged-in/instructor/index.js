@@ -47,9 +47,8 @@ constructor(props){
 
 
   componentDidMount(){//CDM START
-    console.log(this.props)
+    console.log('logged in instructor here , props, state',this.props,this.state)
     this.props.getClasses()
-    this.props.LoginInstrucotrs()
 
   }//CDM FINISH
 
@@ -112,11 +111,11 @@ componentDidUpdate(){
       <li>Location: {aClass.location}</li>
       <li>Duration Time({aClass.durationMins}mins)</li>
       <li>Intesity Level: {aClass.intesityLevel}</li>
-      <li>Start Time:<small> {aClass.startTime}</small></li>
+      <li>Start Time:<small style={{WebkitTextFillColor:'blue',color:'blue'}}> {aClass.startTime}</small></li>
       </ul>
       <div className='modalx'>
-<ListGroupItem className="justify-content-between">Attendees<Badge pill>{aClass.attendees}</Badge></ListGroupItem>
-<ListGroupItem className="justify-content-between">Max Attendees<Badge pill>{aClass.maxAttendees}</Badge></ListGroupItem>
+<ListGroupItem className="justify-content-between">Attendees<Badge pill color='success'>{aClass.attendees}</Badge></ListGroupItem>
+<ListGroupItem className="justify-content-between">Max Attendees<Badge pill color='danger'>{aClass.maxAttendees}</Badge></ListGroupItem>
       </div>
       </Alert>
 

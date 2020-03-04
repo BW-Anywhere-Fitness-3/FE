@@ -1,4 +1,4 @@
-import {GOTCLASSES,FETCHING,ERR,GOTTOKEN,FIRSTTIME,MSG} from './action'
+import {GOTCLASSES,FETCHING,ERR,GOTTOKEN,FIRSTTIME,MSG,loginBtnStateToggle} from './action'
 
 
 const initialState={
@@ -7,6 +7,8 @@ const initialState={
 	loggedOrNot:false,
 	firstLogin:false,
 	loginMessage:'',
+	headerLogBtn:localStorage.getItem('loginBtnState')||'Login/Register',
+
 }
 
 
@@ -37,6 +39,13 @@ const reducer = (state = initialState, action) =>{
 				return {
 					...state,
 					loginMessage:action.payload,
+				}
+
+
+				case loginBtnStateToggle:
+				return {
+					...state,
+					headerLogBtn:action.payload,
 				}
 
 				case ERR:

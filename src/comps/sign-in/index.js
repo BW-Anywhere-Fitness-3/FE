@@ -85,10 +85,8 @@ const cliBtn = {fontWeight:'bolder',fontSize:'1.3rem',border:'#FF0400',border:'d
 const Forms = (props) => {
 
 
-        const [isFirtLogin,setisFirtLogin] = useState( )
-        const [welcomeMsg,setwelcomeMsg] = useState( )
         const history = useHistory()
-  console.log('form',props,history)
+  console.log('sign in form props ,history,state',props,history,useState)
 
 const loginHandle = (who,obj) =>{
 
@@ -98,44 +96,30 @@ const loginHandle = (who,obj) =>{
             switch(who){
 
               case 'instructor':
-              console.log(who,obj)
 
 
      return   axios.post('https://fitnessanywheregroup3.herokuapp.com/api/instructors/login',obj)
              .then(res=>{
-          console.log('logging in....',res)
+          console.log('logging in here is response....',res)
                      localStorage.setItem('token',res.data.token)
-                     setisFirtLogin(res.data.isFirtLogin)
-                     setwelcomeMsg(res.data.message)
+                    res.data.isFirstLogin?localStorage.setItem('firstTime','true'):localStorage.setItem('firstTime','false');
+                     localStorage.setItem('msg',res.data.message)
                      props.loginn()
                      history.push('/logged-instructor')
-
-            // localStorage.setItem('token',res.data.token)
-            // localStorage.setItem('firstTime',res.data.isFirstLogin)
-            // localStorage.setItem('msg',res.data.message)
-            //  props.loginn()
-            // props.history.push('/logged-instructor')
         })
              .catch(err=>console.log(err))
                      
         case 'client':
-              console.log(who,obj)
-
 
      return  axios.post('https://fitnessanywheregroup3.herokuapp.com/api/instructors/login',obj)
          .then(res=>{
-          console.log('logging in....',res)
+          console.log('logging in here is response....',res)
 
                      localStorage.setItem('token',res.data.token)
-                     setisFirtLogin(res.data.isFirtLogin)
-                     setwelcomeMsg(res.data.message)
+                    res.data.isFirstLogin?localStorage.setItem('firstTime','true'):localStorage.setItem('firstTime','false');
+                     localStorage.setItem('msg',res.data.message)
                      props.loginn()
                      history.push('/logged-client')
-            
-             
-                
-            
-          
 
         })
          .catch(err=>confirm('sorry please try again, we dont recognize those credentials',err))
@@ -143,20 +127,8 @@ const loginHandle = (who,obj) =>{
       }
 
 
-
-
-
   }
 
-
-
-
-
-
-
-  useEffect(()=>{
-
-  })
 
   return (
     <Container>

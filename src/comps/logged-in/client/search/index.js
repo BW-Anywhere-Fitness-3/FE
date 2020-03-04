@@ -15,7 +15,6 @@ const ModalExample = (props) => {
   const [modal, setModal] = useState(false);
   const [nestedModal, setNestedModal] = useState(false);
   const [closeAll, setCloseAll] = useState(false);
-  const [classes, setClasses] = useState(false);
 
   const toggle = () => setModal(!modal);
   const toggleNested = () => {
@@ -27,19 +26,6 @@ const ModalExample = (props) => {
     setCloseAll(true);
   }
 
-
-  useEffect(()=>{
-
-props.getClassesForClients()
-
-setClasses(props.copyOfClasses)
-
-
-
-
-
-
-  },[])
 
   return (
     <div>

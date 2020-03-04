@@ -19,18 +19,12 @@ const ModalExample = (props) => {
   const toggle = () => setModal(!modal);
 
 
-  console.log('finally !!###2',props.pickedClass,props.copyOfClasses)
+  console.log('show picked class component rendered: props,state',props,useState)
 
 
 
   useEffect(()=>{
     props.getClasses()
-
-    console.log('iehfoeiheo;heoghehg;oiewhiohoeihgo',props)
-
-
-
-
 
      setPickedClass(
 

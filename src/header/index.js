@@ -1,7 +1,12 @@
 import React from 'react'
 import styled from 'styled-components'
-import {Button} from 'reactstrap'
+import {Button,CardImg} from 'reactstrap'
 import {NavLink} from 'react-router-dom'
+import logo from '../comps/img/AFLogo.svg'
+import {connect} from 'react-redux'
+
+
+
 
 
 const Frame = styled.div`
@@ -27,26 +32,40 @@ const logoutBtn = {fontWeight:'bolder',fontSize:'1.3rem',border:'#FF0400',border
 class NavBar extends React.Component{
 	constructor(props){
 		super(props)
+		
+	}
+
+
+	componentDidMount(){
+	
+		console.log('headers on mount  props',this.props)
+	}
+
+
+
+	componentDidUpdate(){
+		console.log('headers on update , props',this.props)
 			
 	}
+
 
 
 	render(){
 		return (
 
 			<Frame className='navbar'>
-			<span>AnyWhere Fitness</span>
-
+			{/*<figure><Img src={logo} style={{flex:'1',height:'100%',width:'100%'}} alt='logo'/></figure>*/}
+        <CardImg top style={{flex:'.3',height:'100%',width:'100%'}} src={logo} alt='logo' />
 			   {
-this.props.usersState==='Login/Register'?
+this.props.headerLogBtn==='Login/Register'?
 (/*if they are not logged in*/
-<NavLink to='/forms'><Button color='dark' style={loginBtn}>{this.props.usersState}</Button></NavLink>
+<NavLink to='/forms'><Button color='dark' style={loginBtn}>{this.props.headerLogBtn}</Button></NavLink>
 )
 
 ://or
 
 (/*if they are logged in*/
-<NavLink to='/'><Button color='danger' onClick={()=>this.props.logout()}>{this.props.usersState}</Button></NavLink>
+<NavLink to='/'><Button color='danger' onClick={()=>this.props.logout()}>{this.props.headerLogBtn}</Button></NavLink>
 )
 
 }
@@ -55,5 +74,13 @@ this.props.usersState==='Login/Register'?
 }
 }
 
+const mapStateToProps = state => {
+	return {
+		...state
+	}
+}
 
-export default NavBar;
+export default connect(
+	mapStateToProps,
+	{}
+	)(NavBar);
