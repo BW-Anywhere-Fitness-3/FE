@@ -72,7 +72,7 @@ logIn = () =>{
 
 
 {/*THIS PAGE ONLY SHOWS BY DEFUALT*/}
-<Route render={()=>(
+<Route path={['/FE/forms','/']} render={()=>(
 <div style={{marginBottom:'50px'}}>
 <small></small>
 <h1>Welcome</h1>
