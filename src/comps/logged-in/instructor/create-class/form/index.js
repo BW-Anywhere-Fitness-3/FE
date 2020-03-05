@@ -57,7 +57,7 @@ class Formio extends React.Component{
     workoutName:'',
     type:'',
     durationMins:'',
-    intesityLevel:'',
+    intensityLevel:'',
     location:'',
     attendees:'',
     maxAttendees:'',
@@ -108,11 +108,11 @@ class Formio extends React.Component{
       </FormGroup>
 
        <FormGroup row>
-        <Label htmlFor="intesityLevel" sm={2}>intesity Level:</Label>
+        <Label htmlFor="intensityLevel" sm={2}>intesity Level:</Label>
         <Col sm={10}>
           <Input type="select"
-          onChange={(e)=>this.setState({intesityLevel:e.target.value})}
-           name="intesityLevel" id="intesityLevel">
+          onChange={(e)=>this.setState({intensityLevel:e.target.value})}
+           name="intensityLevel" id="intensityLevel">
             <option>High</option>
             <option>Med</option>
             <option>Low</option>

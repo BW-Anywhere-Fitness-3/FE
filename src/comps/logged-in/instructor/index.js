@@ -105,7 +105,7 @@ componentDidUpdate(){
     return(
 
       <Alert color='dark' key={aClass.id} className='modalx'>
-      <h2>Class Name: {aClass.className}</h2>
+      <h2>Class Name: {aClass.workoutName}</h2>
       <ul>
       <li>Type: {aClass.type}</li>
       <li>Location: {aClass.location}</li>

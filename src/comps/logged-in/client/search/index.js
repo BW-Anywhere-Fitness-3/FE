@@ -31,7 +31,7 @@ const ModalExample = (props) => {
         toggle={toggle}  style={styleMatch}>
         <ModalHeader toggle={toggle}  style={styleMatch}>Modal title</ModalHeader>
         <ModalBody  style={styleMatch}>
-            <Classes copyOfClasses={props.copyOfClasses}/>
+            <Classes parentToggle={toggle} copyOfClasses={props.copyOfClasses}/>
         </ModalBody>
         <ModalFooter  style={styleMatch}>
           <Button color="danger" onClick={toggle}>Cancel</Button>

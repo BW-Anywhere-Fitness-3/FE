@@ -4,7 +4,7 @@ import React, { useState, useEffect } from 'react';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter ,Badge,ListGroup, ListGroupItem ,Media} from 'reactstrap';
 import {connect} from 'react-redux'
 import {getClasses} from '../../../../../ReduxStore/action'
-
+import {axiosCall} from '../../../../axios/'
 
 const ModalExample = (props) => {
   const {
@@ -15,6 +15,14 @@ const ModalExample = (props) => {
   const [modal, setModal] = useState(false);
   const toggle = () => setModal(!modal);
 
+const joinClass = (obj) =>{
+axiosCall().put(`/api/classes/${obj.id}`,{...obj,attendees:obj.attendees+1}).then(res=>{
+  console.log('res to attendence update')
+  props.getClasses()
+  toggle()
+  props.parentToggle()
+})
+}
 
   console.log('show picked class component rendered: props,state',props,useState)
 
@@ -63,7 +71,7 @@ const ModalExample = (props) => {
         </Media>
         <Media body>
           <Media heading>
-           <Badge color="danger">Class Name: {go.className} </Badge>
+           <Badge color="danger">Class Name: {go.workoutName} </Badge>
           </Media>
             <ListGroup className='modalx' color='dark'>
       <ListGroupItem style={{backgroundColor:'#1F1F1F',WebkitTextFillColor:'azure',color:'azure'}}>Type: {go.type}</ListGroupItem>
@@ -78,6 +86,10 @@ const ModalExample = (props) => {
 
        <label>MaxAttendees</label>
       <input type='number' value={go.maxAttendees} disabled/>
+
+      </div>
+      <div>
+      <Button onClick={()=>joinClass(go)}>join Class</Button>
       </div>
         </Media>
       </Media>

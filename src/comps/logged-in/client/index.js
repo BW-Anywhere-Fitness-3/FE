@@ -114,7 +114,7 @@ useEffect(()=>{
         </Media>
         <Media body>
           <Media heading>
-           <Badge color="danger" style={{fontWeight:'bolder',color:'azure',WebkitTextFillColor:'azure'}}>Class: {aClass.className} </Badge>
+           <Badge color="danger" style={{fontWeight:'bolder',color:'azure',WebkitTextFillColor:'azure'}}>Class: {aClass.workoutName} </Badge>
           </Media>
             <ListGroup className='modalx'>
       <ListGroupItem>Type<br />({aClass.type})</ListGroupItem>

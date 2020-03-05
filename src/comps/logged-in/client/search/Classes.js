@@ -46,7 +46,7 @@ classChoice = cl =>{
 
 this.setState({
   pickedObj:this.state.classes.filter(el=>{
-    return el.className === this.state.pickedClass
+    return el.workoutName === this.state.pickedClass
   })
 })
 
@@ -66,7 +66,7 @@ this.setState({
         {
           this.props.copyOfClasses && this.props.copyOfClasses.map(aClass=>{
               return(
-                <option  value={aClass.className} key={aClass.id}/>
+                <option  value={aClass.workoutName} key={aClass.id}/>
                 )
           })
         }
@@ -74,6 +74,7 @@ this.setState({
 
       <ShowPickedClass copyOfClasses={this.props.copyOfClasses} 
        pickedClass={this.state.pickedObj} 
+       parentToggle={this.props.parentToggle}
       buttonLabel='Show Picked Class' click={this.classChoice}/>
       </div>
     );
