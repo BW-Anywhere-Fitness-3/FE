@@ -2,6 +2,7 @@ html{
   background-color:#1F1F1F;
   -webkit-text-fill-color:azure;
   color:azure;
+ 
 }
 
 .App {
@@ -10,6 +11,24 @@ html{
   -webkit-text-fill-color:azure;
   color:azure;
   font-weight:bolder;
+
+
+}
+
+.imgBlock{
+    flex:1;
+    -moz-background-size:cover;
+  -webkit-background-size:cover;
+  background-size:cover;
+  background-repeat:no-repeat;
+  background-position:center;
+  background-image:url('./comps/img/bg.jpg');
+  margin-top:50px;
+}
+
+.imgBlock img{
+  border:double 2px #FF0400;
+
 }
 
 

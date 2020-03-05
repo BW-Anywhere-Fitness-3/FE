@@ -6,6 +6,9 @@ import {Button,Container} from 'reactstrap'
 import {connect} from 'react-redux'
 import {logoutBtnState, loginBtnState} from './ReduxStore/action'
 
+import {Media} from 'reactstrap'
+import imgBlock from './comps/img/bg.jpg'
+
 import Header from './header/'
 import Login from './comps/sign-in/'
 import Register from './comps/register/'
@@ -90,7 +93,11 @@ logIn = () =>{
 
 
 
+ 
 
+  {/* <Media>
+          <Media object src={imgBlock} alt='beach yoga' />
+        </Media>*/}
   </Container>
       </div>
     );
