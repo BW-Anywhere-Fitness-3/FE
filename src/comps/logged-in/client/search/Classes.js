@@ -6,6 +6,16 @@ import axios from 'axios'
 import {getClassesForClients} from '../../../../ReduxStore/action'
 import ShowPickedClass from './showPickedClass/'
  
+
+
+
+   const styleFullMatch = {
+              backgroundColor:'#3A3A3C',
+            }
+
+
+
+
 class ClassesList extends Component {
   constructor(props){
     super(props)
@@ -50,7 +60,7 @@ this.setState({
   render() {
     console.log('classes comp showing props',this.props)
     return (
-      <div className="modalx">
+      <div className="modalx"  style={styleFullMatch}>
 
 
         <input list='classes' onChange={(e)=>this.setState({pickedClass:e.target.value})}/>

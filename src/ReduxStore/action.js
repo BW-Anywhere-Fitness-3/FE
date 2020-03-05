@@ -19,7 +19,6 @@ export const getClasses = () => dispatch =>{
 
 		axiosCall().get("/api/classes").then(classes=>{
 				console.log('action- to get classes',classes.data)
-				localStorage.setItem("classes",JSON.stringify(classes.data))
 				dispatch({type:GOTCLASSES, payload:classes.data})
 		}).catch(err=>{
 			console.log('action getClasses error',err)
@@ -105,7 +104,7 @@ export const loginBtnState = () => dispatch =>{
 		
 
 
-
+ 
 
 }
 
@@ -114,7 +113,8 @@ export const logoutBtnState = () => dispatch =>{
 
 	const oneByOne = async () =>{
 			await localStorage.setItem('loginBtnState','Logout')
-			return await 	dispatch({type:loginBtnStateToggle,payload:localStorage.getItem('loginBtnState')})
+		 await 	dispatch({type:loginBtnStateToggle,payload:localStorage.getItem('loginBtnState')})
+		 await 	dispatch({type:MSG,payload:localStorage.getItem('msg')})
 	}
 
 	oneByOne()

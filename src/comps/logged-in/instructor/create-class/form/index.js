@@ -25,21 +25,18 @@ class Formio extends React.Component{
 
 
 
-    createClass = obj =>{
-      console.log(obj)
-      const withId = `/api/classes`
-      axiosCall().post(withId,obj).then(
-        res=>{
-          console.log(res)
-        })
-    }
-
     send2cc = (e)=>{
       e.preventDefault()
-          this.createClass(this.state)
-      e.target.reset()
-      this.props.toggle()
+       axiosCall().post('/api/classes',this.state).then(
+        res=>{
+          console.log(res)
+          this.props.toggle()
       this.props.refreshClass()
+
+          
+        })
+      e.target.reset()
+      
     }
 
 

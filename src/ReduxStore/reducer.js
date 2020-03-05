@@ -6,7 +6,7 @@ const initialState={
 	error:"",
 	loggedOrNot:false,
 	firstLogin:false,
-	loginMessage:'',
+	loginMessage:localStorage.getItem('msg'),
 	headerLogBtn:localStorage.getItem('loginBtnState')||'Login/Register',
 
 }

@@ -41,9 +41,22 @@ const ModalExample = (props) => {
   return (
     <div>
       <Button color="danger" onClick={()=>{props.click();toggle()}}>{buttonLabel}</Button>
-      <Modal isOpen={modal} fade={false} toggle={toggle} className={className}>
-        <ModalHeader toggle={toggle}>Modal title</ModalHeader>
-        <ModalBody>
+      <Modal isOpen={modal} fade={false} toggle={toggle} className={className} style={{
+              backgroundColor:'#3A3A3C',
+              borderTop: '2px solid #FF0400',
+              borderBottom:' 4px solid #1F1F1F'
+            }}>
+        <ModalHeader toggle={toggle} style={{
+              boxShadow:'0 0 10px #000',
+              backgroundColor:'#3A3A3C',
+              borderTop: '2px solid #FF0400',
+              borderBottom:' 4px solid #1F1F1F'
+            }}>{props.pickedClass.length>0?'Class Card':'No Class Picked'}</ModalHeader>
+        <ModalBody style={{
+              backgroundColor:'#3A3A3C',
+              borderTop: '2px solid #FF0400',
+              borderBottom:' 4px solid #1F1F1F'
+            }}>
 
 
 
@@ -52,7 +65,9 @@ const ModalExample = (props) => {
 
         return(
 
-            <Media className='classCard'  key={go.id}>
+            <Media style={{
+              backgroundColor:'#3A3A3C',
+            }}  key={go.id}>
       <h2></h2>
         <Media left top href="#">
           <Media  object src='' alt="thumbnail of video" style={{width:'100%',height:'100%'}} />
@@ -61,12 +76,12 @@ const ModalExample = (props) => {
           <Media heading>
            <Badge color="danger">Class Name: {go.className} </Badge>
           </Media>
-            <ListGroup className='modalx'>
-      <ListGroupItem>Type: {go.type}</ListGroupItem>
-      <ListGroupItem>Location: {go.location}</ListGroupItem>
-      <ListGroupItem>Duration Time({go.durationMins}mins)</ListGroupItem>
-      <ListGroupItem>Intesity Level: {go.intesityLevel}</ListGroupItem>
-      <ListGroupItem>Start Time:<small> {go.startTime}</small></ListGroupItem>
+            <ListGroup className='modalx' color='dark'>
+      <ListGroupItem style={{backgroundColor:'#1F1F1F',WebkitTextFillColor:'azure',color:'azure'}}>Type: {go.type}</ListGroupItem>
+      <ListGroupItem  style={{backgroundColor:'#1F1F1F',WebkitTextFillColor:'azure',color:'azure'}}>Location: {go.location}</ListGroupItem>
+      <ListGroupItem  style={{backgroundColor:'#1F1F1F',WebkitTextFillColor:'azure',color:'azure'}}>Duration Time({go.durationMins}mins)</ListGroupItem>
+      <ListGroupItem  style={{backgroundColor:'#1F1F1F',WebkitTextFillColor:'azure',color:'azure'}}>Intesity Level: {go.intesityLevel}</ListGroupItem>
+      <ListGroupItem  style={{backgroundColor:'#1F1F1F',WebkitTextFillColor:'azure',color:'azure'}}>Start Time:<small> {go.startTime}</small></ListGroupItem>
     </ListGroup>
      <div>
       <label>Attendees</label>
@@ -95,9 +110,12 @@ const ModalExample = (props) => {
 
 
         </ModalBody>
-        <ModalFooter>
-          <Button color="primary" onClick={toggle}>Do Something</Button>{' '}
-          <Button color="secondary" onClick={toggle}>Cancel</Button>
+        <ModalFooter style={{
+              backgroundColor:'#3A3A3C',
+              borderTop: '2px solid #FF0400',
+              borderBottom:' 4px solid #1F1F1F'
+            }}>
+          <Button color="danger" onClick={toggle}>Cancel</Button>
         </ModalFooter>
       </Modal>
     </div>

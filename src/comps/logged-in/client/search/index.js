@@ -27,17 +27,23 @@ const ModalExample = (props) => {
   }
 
 
+
+  const styleMatch = {
+              backgroundColor:'#3A3A3C',
+
+            }
+
   return (
     <div>
 
-<Button color="danger" onClick={toggle}>{buttonLabel}</Button>
+<Button color="danger" style={{fontWeight:'bolder'}}onClick={toggle}>{buttonLabel}</Button>
       <Modal isOpen={modal} modalTransition={{ timeout: 700 }} backdropTransition={{ timeout: 1300 }}
-        toggle={toggle}>
-        <ModalHeader toggle={toggle}>Modal title</ModalHeader>
-        <ModalBody>
+        toggle={toggle}  style={styleMatch}>
+        <ModalHeader toggle={toggle}  style={styleMatch}>Modal title</ModalHeader>
+        <ModalBody  style={styleMatch}>
             <Classes copyOfClasses={props.copyOfClasses}/>
         </ModalBody>
-        <ModalFooter>
+        <ModalFooter  style={styleMatch}>
           <Button color="danger" onClick={toggle}>Cancel</Button>
         </ModalFooter>
       </Modal>
