@@ -1,4 +1,4 @@
-import {GOTCLASSES,FETCHING,ERR,GOTTOKEN,FIRSTTIME,MSG,loginBtnStateToggle} from './action'
+import {GOTCLASSES,FETCHING,ERR,FIRSTTIME,MSG,loginBtnStateToggle} from './action'
 
 
 const initialState={

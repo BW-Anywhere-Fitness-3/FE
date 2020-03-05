@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { UncontrolledCarousel,Card,CardBody,CardTitle,CardImg,Media,CardSubtitle,CardLink,CardText } from 'reactstrap';
+import { UncontrolledCarousel,Card,CardBody,CardTitle,CardSubtitle,CardText } from 'reactstrap';
 import anywhere from '../../img/1.jpg'
 import showthem from '../../img/2.jpg'
 import informofequipment from '../../img/3.jpg'
@@ -86,8 +86,8 @@ componentDidUpdate(){
           <CardSubtitle><h1>intructor Panel</h1></CardSubtitle>
         </CardBody>
         <CardBody>
-          <CardText>
-            <h3>{this.state.firstTimerMSg}</h3>
+          <CardText style={{fontSize:'2rem'}}>
+            {this.state.firstTimerMSg}
           </CardText>
         </CardBody>
       </Card>

@@ -1,8 +1,5 @@
 import React, { Component } from 'react';
-import {NavLink,Switch,Route} from 'react-router-dom'
-import {Button,Container,Media} from 'reactstrap'
 import {connect} from 'react-redux'
-import axios from 'axios'
 import {getClassesForClients} from '../../../../ReduxStore/action'
 import ShowPickedClass from './showPickedClass/'
  
@@ -31,7 +28,6 @@ class ClassesList extends Component {
 
   componentDidMount(){//CDM START
 
-const token = localStorage.getItem('token')
 
     
     console.log(this.props)

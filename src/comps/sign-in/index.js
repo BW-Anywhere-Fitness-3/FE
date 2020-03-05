@@ -1,4 +1,4 @@
-import React, {useState,useEffect} from 'react';
+import React, {useState} from 'react';
 import {NavLink,Route,Switch,useHistory} from 'react-router-dom'
 import Client from './client/'
 import Intructor from './instructor/'
@@ -6,7 +6,6 @@ import {Button} from 'reactstrap'
 import styled from 'styled-components'
 import axios from 'axios'
 import {connect} from 'react-redux'
-import {axiosCall} from '../axios/'
 import {getClasses} from '../../ReduxStore/action'
  const Container = styled.div`
 flex:1;
@@ -79,7 +78,7 @@ grid-gap:100px;
 
 
 const insBtn = {fontWeight:'bolder',fontSize:'1.3rem',WebkitTextFillColor:'#000',color:"#000",border:'double .5px #FF0400'}
-const cliBtn = {fontWeight:'bolder',fontSize:'1.3rem',border:'#FF0400',border:'double .5px #FF0400'}
+const cliBtn = {fontWeight:'bolder',fontSize:'1.3rem',border:'double .5px #FF0400'}
 
   
 const Forms = (props) => {
@@ -124,6 +123,8 @@ const loginHandle = (who,obj) =>{
         })
          .catch(err=>confirm('sorry please try again, we dont recognize those credentials',err))
 
+          default:
+          return false;
       }
 
 

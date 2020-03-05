@@ -26,14 +26,9 @@ color:azure;
 
 
 const loginBtn = {fontWeight:'bolder',fontSize:'1.3rem',WebkitTextFillColor:'azure',color:"azure",border:'double .5px #FF0400',boxShadow:'0 0 5px #222'}
-const logoutBtn = {fontWeight:'bolder',fontSize:'1.3rem',border:'#FF0400',border:'double .5px #FF0400'}
 
 
 class NavBar extends React.Component{
-	constructor(props){
-		super(props)
-		
-	}
 
 
 	componentDidMount(){

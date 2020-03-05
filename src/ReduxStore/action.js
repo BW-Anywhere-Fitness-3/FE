@@ -1,14 +1,11 @@
-import React from 'react'
-import axios from 'axios'
 export const FETCHING = 'FETCHING'
 export const GOTCLASSES = 'GOTCLASSES'
-export const GOTTOKEN = 'GOTTOKEN'
+// export const GOTTOKEN = 'GOTTOKEN'
 export const FIRSTTIME = 'FIRSTTIME'
 export const loginBtnStateToggle = 'loginBtnStateToggle'
 export const MSG = 'MSG'
 export const ERR = 'ERR'	
 import {axiosCall} from '../comps/axios/'
-import {Redirect} from 'react-router-dom'
 
 
 

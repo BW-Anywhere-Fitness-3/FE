@@ -1,8 +1,7 @@
-import React, { Component, useState,useEffect } from 'react';
-import {Card,CardBody,Badge,CardTitle,CardImg,ListGroup, ListGroupItem ,Media,CardSubtitle,CardLink,CardText} from 'reactstrap'
+import React, {  useState,useEffect } from 'react';
+import {Card,CardBody,Badge,CardTitle,ListGroup, ListGroupItem ,Media,CardText} from 'reactstrap'
 import SearchClassesBtn from './search/'
 import {connect} from 'react-redux'
-import {LoggedContext} from '../../ContextHook/'
 import styled from 'styled-components'
 import yogaImg from '../../img/1.jpg'
 import danceImg from '../../img/2.jpg'
@@ -35,12 +34,6 @@ const Box = styled.div`
 `;
 
 
-  const styleFullMatch = {
-              boxShadow:'0 0 10px #000',
-              backgroundColor:'#3A3A3C',
-              borderTop: '2px solid #FF0400',
-              borderBottom:' 4px solid #1F1F1F',
-            }
 
  const classCardImgs = {boxShadow:'0 0 5px #000',width:'100%',height:'100%',border:'double #FF0400',borderRadius:'10px'}
 
@@ -49,8 +42,8 @@ const Box = styled.div`
 const Client = (props)=> {
 
 
-  const [chillTraining,setChillTraining] = useState([yogaImg,danceImg])
-  const [moreTraining,setMoreTraining] = useState([strengthImg,cardioImg])
+  const [chillTraining] = useState([yogaImg,danceImg])
+  const [moreTraining] = useState([strengthImg,cardioImg])
 
 
 useEffect(()=>{

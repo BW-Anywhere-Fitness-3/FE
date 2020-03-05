@@ -1,17 +1,60 @@
 import React from 'react'
-import { Col, Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
-import axios from 'axios'
-import {useParams} from 'react-router-dom'
+import { Col, Button, FormGroup, Label, Input } from 'reactstrap';
+import styled from 'styled-components'
 import {axiosCall} from '../../../../axios/'
-let msg = false;
 
 
+const Form = styled.form`
+background-color:#3A3A3C;
+padding:2%;
+-webkit-text-fill-color:azure;
+color:azure;
+border:solid 1px #FF0400;
+box-shadow:0 0 5px #000;
+font-weight:bolder;
+
+  input{
+    background-color:#1F1F1F;
+    border-left:double #FF0400;
+    border-bottom:double #FF0400;
+    -webkit-text-fill-color:azure;
+    color:azure;
+  }
+
+  select{
+        background-color:#1F1F1F;
+    border-left:double #FF0400;
+    border-bottom:double #FF0400;
+    -webkit-text-fill-color:azure;
+    color:azure;
+  }
+
+  select:focus{
+    background-color:#1F1F1F;
+    border-left:double #FF0400;
+    border-bottom:double #FF0400;
+    -webkit-text-fill-color:azure;
+    color:azure;
+  }
+
+  input:focus{
+    background-color:#1F1F1F;
+    border-left:double #FF0400;
+    border-bottom:double #FF0400;
+    -webkit-text-fill-color:azure;
+    color:azure;
+  }
+
+  button{
+    font-weight:bolder;
+  }
+`;
 
 class Formio extends React.Component{
   constructor(){
   super()
   this.state={
-    className:'',
+    workoutName:'',
     type:'',
     durationMins:'',
     intesityLevel:'',
@@ -33,9 +76,9 @@ class Formio extends React.Component{
           this.props.toggle()
       this.props.refreshClass()
 
-          
+
         })
-      e.target.reset()
+      // e.target.reset()
       
     }
 
@@ -46,10 +89,10 @@ class Formio extends React.Component{
     <Form onSubmit={this.send2cc}>
           <h2>Creator Mode</h2>
      <FormGroup>
-        <Label htmlFor="className">Class Name:</Label>
+        <Label htmlFor="workoutName">Class Name:</Label>
         <Input type="text"
-         onChange={(e)=>this.setState({className:e.target.value})}
-         name="className" id="className" placeholder="Class Name" />
+         onChange={(e)=>this.setState({workoutName:e.target.value})}
+         name="workoutName" id="workoutName" placeholder="Workout Name" />
       </FormGroup>
       <FormGroup>
         <Label htmlFor="location">Location:</Label>

@@ -11,13 +11,11 @@ import Login from './comps/sign-in/'
 import Register from './comps/register/'
 import LoggedClient from './comps/logged-in/client/'
 import LoggedInstructor from './comps/logged-in/instructor/'
-import {getClasses} from './ReduxStore/action'
-import axios from 'axios'
 
 
 
 const reg = {fontWeight:'bolder',fontSize:'1.3rem',WebkitTextFillColor:'#000',color:"#000",border:'double .5px #FF0400'}
-const log = {fontWeight:'bolder',fontSize:'1.3rem',border:'#FF0400',border:'double .5px #FF0400'}
+const log = {fontWeight:'bolder',fontSize:'1.3rem',border:'double .5px #FF0400'}
 
   
 class App extends Component {
@@ -46,6 +44,7 @@ logoutBtn = () =>{
     
 
 }
+
 
 
 logIn = () =>{

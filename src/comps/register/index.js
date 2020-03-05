@@ -85,7 +85,7 @@ grid-gap:100px;
 
 
 const insBtn = {fontWeight:'bolder',fontSize:'1.3rem',WebkitTextFillColor:'#000',color:"#000",border:'double .5px #FF0400'}
-const cliBtn = {fontWeight:'bolder',fontSize:'1.3rem',border:'#FF0400',border:'double .5px #FF0400'}
+const cliBtn = {fontWeight:'bolder',fontSize:'1.3rem',border:'double .5px #FF0400'}
 
   
 
@@ -109,6 +109,8 @@ const Forms = (props) => {
 
         }).catch(err=>console.log('registering error',err))
         break;
+        default:
+        return false
       }
 
 
