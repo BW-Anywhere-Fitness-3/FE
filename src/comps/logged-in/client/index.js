@@ -3,10 +3,23 @@ import {Card,CardBody,Badge,CardTitle,ListGroup, ListGroupItem ,Media,CardText} 
 import SearchClassesBtn from './search/'
 import {connect} from 'react-redux'
 import styled from 'styled-components'
-import yogaImg from '../../img/1.jpg'
-import danceImg from '../../img/2.jpg'
-import strengthImg from '../../img/3.jpg'
-import cardioImg from '../../img/3.jpg'
+
+
+import yoga1Img from '../../img/1.jpg'
+import yoga2Img from '../../img/5.jpg'
+
+import strength1Img from '../../img/3.jpg'
+import strength2Img from '../../img/8.jpg'
+
+import dance1Img from '../../img/7.jpg'
+import dance2Img from '../../img/9.jpg'
+
+import gym1Img from '../../img/9.jpg'
+import gym2Img from '../../img/6.jpg'
+
+import jog1Img from '../../img/10.jpg'
+import jog2Img from '../../img/11.jpg'
+
 import defImg from '../../img/noimage.jpg'
 import {getClasses} from '../../../ReduxStore/action'
 
@@ -42,8 +55,11 @@ const Box = styled.div`
 const Client = (props)=> {
 
 
-  const [chillTraining] = useState([yogaImg,danceImg])
-  const [moreTraining] = useState([strengthImg,cardioImg])
+  const [yogaType] = useState([yoga1Img,yoga2Img])
+  const [strengthType] = useState([strength1Img,strength2Img])
+  const [danceType] = useState([dance1Img,dance2Img])
+  const [gymType] = useState([gym1Img,gym2Img])
+  const [jogType] = useState([jog1Img,jog2Img])
 
 
 useEffect(()=>{
@@ -104,10 +120,16 @@ useEffect(()=>{
       <h2></h2>
         <Media left top href="#">
           <Media  object src={
-            aClass.type.match(/yoga/i) || aClass.type.match(/dance/i)?
-            chillTraining[Math.floor(Math.random()*chillTraining.length)]:
-            aClass.type.match(/strength/i) || aClass.type.match(/weights/i)?
-            moreTraining[Math.floor(Math.random()*chillTraining.length)]:
+            aClass.type.match(/yoga/i) || aClass.type.match(/breath/i)?
+            yogaType[Math.floor(Math.random()*yogaType.length)]:
+            aClass.type.match(/strength/i) || aClass.type.match(/weight/i)?
+            strengthType[Math.floor(Math.random()*strengthType.length)]:
+             aClass.type.match(/dance/i) || aClass.type.match(/dancing/i)?
+            danceType[Math.floor(Math.random()*danceType.length)]:
+             aClass.type.match(/gymnastics/i) || aClass.type.match(/cross/i) || aClass.type.match(/spin/i)?
+            gymType[Math.floor(Math.random()*gymType.length)]:
+             aClass.type.match(/jog/i) || aClass.type.match(/stamina/i) ?
+            jogType[Math.floor(Math.random()*jogType.length)]:
             defImg
 
           } alt="thumbnail of video" style={classCardImgs} />
