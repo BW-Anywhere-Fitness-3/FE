@@ -69,6 +69,7 @@ strictKeyz = e =>{
     if((key<59 && key>47) || 
         (key<91 && key>64) ||
         key === 8 ||
+        key === 9 ||
         key === 16 ||
         key === 13
         ){
