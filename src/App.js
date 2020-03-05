@@ -71,7 +71,7 @@ logIn = () =>{
 {/*THIS PAGE ONLY SHOWS BY DEFUALT*/}
 <Route render={()=>(
 <div>
-<small>default page</small>
+<small></small>
 <h1>Welcome</h1>
 <h1>Please Login or Register</h1>
 <div>
