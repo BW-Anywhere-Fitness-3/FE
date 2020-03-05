@@ -73,11 +73,11 @@ logIn = () =>{
 
 {/*THIS PAGE ONLY SHOWS BY DEFUALT*/}
 <Route render={()=>(
-<div>
+<div style={{marginBottom:'50px'}}>
 <small></small>
 <h1>Welcome</h1>
 <h1>Please Login or Register</h1>
-<div>
+<div style={{display:'flex',gridGap:'10px',justifyContent:'center'}}>
 
 <NavLink to='/FE/forms/login/'><Button color='dark' style={log}>Login</Button></NavLink>
 {'   '}

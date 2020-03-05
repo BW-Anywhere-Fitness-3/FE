@@ -22,6 +22,32 @@ background-color:#000;
 border-bottom:solid red;
 -webkit-text-fill-color:azure;
 color:azure;
+
+
+.img{
+flex:.3;
+height:100%;
+width:100%;
+cursor:pointer;
+}
+
+
+@media(max-width:500px){
+justify-content:center;
+		.img{
+			width:50%;
+			height:50%;
+		}
+}
+
+
+
+@media(max-width:900px) and (max-height:500px) and (min-width:500px){
+		.img{
+			width:50%;
+			height:50%;
+		}
+}
 `;
 
 
@@ -50,7 +76,7 @@ class NavBar extends React.Component{
 
 			<Frame className='navbar'>
 			{/*<figure><Img src={logo} style={{flex:'1',height:'100%',width:'100%'}} alt='logo'/></figure>*/}
-        <CardImg top style={{flex:'.3',height:'100%',width:'100%'}} src={logo} alt='logo' />
+        <CardImg className='img' onClick={()=>location.href="https://dreamy-northcutt-087c5c.netlify.com/"} top src={logo} alt='logo' />
 			   {
 this.props.headerLogBtn==='Login/Register'?
 (/*if they are not logged in*/

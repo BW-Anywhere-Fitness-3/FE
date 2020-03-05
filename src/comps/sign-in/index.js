@@ -136,15 +136,15 @@ const loginHandle = (who,obj) =>{
     <div>
      <h1>Login as</h1>
 
-      <NavLink to='/FE//forms/login/'><Button color='dark' style={cliBtn}>Client</Button></NavLink>
+      <NavLink to='/FE/forms/login/'><Button color='dark' style={cliBtn}>Client</Button></NavLink>
       {'     '}
-      <NavLink to='/FE//forms/login/as-instructor'><Button color='light' style={insBtn}>Instructor</Button></NavLink>
+      <NavLink to='/FE/forms/login/as-instructor'><Button color='light' style={insBtn}>Instructor</Button></NavLink>
       
       
     </div>
     <Switch>
-    <Route exact path='/FE//forms/login/' render={()=><Client login={loginHandle} />} />
-    <Route exact path='/FE//forms/login/as-instructor' render={()=><Intructor login={loginHandle} />} />
+    <Route exact path='/FE/forms/login/' render={()=><Client login={loginHandle} />} />
+    <Route exact path='/FE/forms/login/as-instructor' render={()=><Intructor login={loginHandle} />} />
     </Switch>
 
     </Container>

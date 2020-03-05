@@ -42,7 +42,37 @@ const Box = styled.div`
       border-bottom: 4px solid #1F1F1F;
       box-shadow:0 0 10px;
       border-radius:20px;
-    }
+    } 
+
+
+
+
+@media(max-width:500px){
+
+  .classCard{
+    flex-direction:column;
+    width:100%;
+    padding:10px;
+    justify-content:center;
+    align-items:center;
+  }
+
+
+
+
+}
+
+
+
+@media(max-width:900px) and (max-height:500px) and (min-width:500px){
+     .classCard{
+    flex-direction:column;
+    width:100%;
+    padding:10px;
+    justify-content:center;
+    align-items:center;
+  }  
+}
 
 `;
 
