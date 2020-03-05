@@ -54,13 +54,13 @@ class NavBar extends React.Component{
 			   {
 this.props.headerLogBtn==='Login/Register'?
 (/*if they are not logged in*/
-<NavLink to='/forms'><Button color='dark' style={loginBtn}>{this.props.headerLogBtn}</Button></NavLink>
+<NavLink to='/FE/forms'><Button color='dark' style={loginBtn}>{this.props.headerLogBtn}</Button></NavLink>
 )
 
 ://or
 
 (/*if they are logged in*/
-<NavLink to='/'><Button color='danger' onClick={()=>this.props.logout()}>{this.props.headerLogBtn}</Button></NavLink>
+<NavLink to='/FE/'><Button color='danger' onClick={()=>this.props.logout()}>{this.props.headerLogBtn}</Button></NavLink>
 )
 
 }

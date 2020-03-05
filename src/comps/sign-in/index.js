@@ -104,7 +104,7 @@ const loginHandle = (who,obj) =>{
                     res.data.isFirstLogin?localStorage.setItem('firstTime','true'):localStorage.setItem('firstTime','false');
                      localStorage.setItem('msg',res.data.message)
                      props.loginn()
-                     history.push('/logged-instructor')
+                     history.push('/FE/logged-instructor')
         })
              .catch(err=>console.log(err))
                      
@@ -118,7 +118,7 @@ const loginHandle = (who,obj) =>{
                     res.data.isFirstLogin?localStorage.setItem('firstTime','true'):localStorage.setItem('firstTime','false');
                      localStorage.setItem('msg',res.data.message)
                      props.loginn()
-                     history.push('/logged-client')
+                     history.push('/FE/logged-client')
 
         })
          .catch(err=>confirm('sorry please try again, we dont recognize those credentials',err))
@@ -136,15 +136,15 @@ const loginHandle = (who,obj) =>{
     <div>
      <h1>Login as</h1>
 
-      <NavLink to='/forms/login/'><Button color='dark' style={cliBtn}>Client</Button></NavLink>
+      <NavLink to='/FE//forms/login/'><Button color='dark' style={cliBtn}>Client</Button></NavLink>
       {'     '}
-      <NavLink to='/forms/login/as-instructor'><Button color='light' style={insBtn}>Instructor</Button></NavLink>
+      <NavLink to='/FE//forms/login/as-instructor'><Button color='light' style={insBtn}>Instructor</Button></NavLink>
       
       
     </div>
     <Switch>
-    <Route exact path='/forms/login/' render={()=><Client login={loginHandle} />} />
-    <Route exact path='/forms/login/as-instructor' render={()=><Intructor login={loginHandle} />} />
+    <Route exact path='/FE//forms/login/' render={()=><Client login={loginHandle} />} />
+    <Route exact path='/FE//forms/login/as-instructor' render={()=><Intructor login={loginHandle} />} />
     </Switch>
 
     </Container>
