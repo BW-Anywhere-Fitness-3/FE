@@ -44,9 +44,10 @@ this.setState({classes:this.props.copyOfClasses})
 classChoice = cl =>{
 
 
-this.setState({
+return this.setState({
   pickedObj:this.state.classes.filter(el=>{
-    return el.workoutName === this.state.pickedClass
+    const choiceHere = new RegExp(this.state.pickedClass,'i')
+      return el.workoutName.match(choiceHere)
   })
 })
 

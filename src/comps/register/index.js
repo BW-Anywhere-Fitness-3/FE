@@ -98,14 +98,14 @@ const Forms = (props) => {
         case 'instructor':
         axios.post('https://fitnessanywheregroup3.herokuapp.com/api/instructors/register',obj).then(res=>{
           console.log('registering data given back',res)
-            props.history.push('/fomrs/login')
+            props.history.push('/FE/fomrs/login')
 
         }).catch(err=>console.log('registering error',err))
         break;
         case 'client':
           axios.post('https://fitnessanywheregroup3.herokuapp.com/api/instructors/register',obj).then(res=>{
           console.log('registering data given back',res)
-            props.history.push('/fomrs/login')
+            props.history.push('/FE/fomrs/login')
 
         }).catch(err=>console.log('registering error',err))
         break;
@@ -122,15 +122,15 @@ const Forms = (props) => {
     <div>
       <h1>Register as</h1>
 
-      <NavLink to='/forms/register/'><Button color='dark'  style={cliBtn}>Client</Button></NavLink>
+      <NavLink to='/FE/forms/register/'><Button color='dark'  style={cliBtn}>Client</Button></NavLink>
       {'     '}
-      <NavLink to='/forms/register/as-instructor'><Button color='light'  style={insBtn}>Instructor</Button></NavLink>
+      <NavLink to='/FE/forms/register/as-instructor'><Button color='light'  style={insBtn}>Instructor</Button></NavLink>
       
       
     </div>
     <Switch>
-    <Route exact path='/forms/register/' render={()=><Client register={registerHandle} />} />
-    <Route exact path='/forms/register/as-instructor' render={()=><Intructor register={registerHandle} />}/>
+    <Route exact path='/FE/forms/register/' render={()=><Client register={registerHandle} />} />
+    <Route exact path='/FE/forms/register/as-instructor' render={()=><Intructor register={registerHandle} />}/>
     </Switch>
 
     </Container>

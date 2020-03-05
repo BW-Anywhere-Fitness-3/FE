@@ -63,25 +63,25 @@ logIn = () =>{
       <Container>
 <Switch>
 
-<PrivateRoute exact path='/logged-client' component={LoggedClient} />
-<PrivateRoute exact path='/logged-instructor' component={LoggedInstructor} />
-<Route path='/forms/login' render={()=><Login loginn={this.logIn}/>}/>
-<Route path='/forms/register' component={Register}/>
+<PrivateRoute exact path='/FE/logged-client' component={LoggedClient} />
+<PrivateRoute exact path='/FE/logged-instructor' component={LoggedInstructor} />
+<Route path='/FE/forms/login' render={()=><Login loginn={this.logIn}/>}/>
+<Route path='/FE/forms/register' component={Register}/>
 
 
 
 
 {/*THIS PAGE ONLY SHOWS BY DEFUALT*/}
 <Route render={()=>(
-<div>
+<div style={{marginBottom:'50px'}}>
 <small></small>
 <h1>Welcome</h1>
 <h1>Please Login or Register</h1>
-<div>
+<div style={{display:'flex',gridGap:'10px',justifyContent:'center'}}>
 
-<NavLink to='/forms/login/'><Button color='dark' style={log}>Login</Button></NavLink>
+<NavLink to='/FE/forms/login/'><Button color='dark' style={log}>Login</Button></NavLink>
 {'   '}
-<NavLink to='/forms/register/'><Button color='light' style={reg}>Register</Button></NavLink>
+<NavLink to='/FE/forms/register/'><Button color='light' style={reg}>Register</Button></NavLink>
 </div>
 </div>
   )} />
