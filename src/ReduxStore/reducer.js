@@ -5,7 +5,7 @@ const initialState={
 	classes:[],
 	error:"",
 	loggedOrNot:false,
-	firstLogin:false,
+	firstLogin:localStorage.getItem('firstTime'),
 	loginMessage:localStorage.getItem('msg'),
 	headerLogBtn:localStorage.getItem('loginBtnState')||'Login/Register',
 

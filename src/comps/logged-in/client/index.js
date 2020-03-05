@@ -89,7 +89,7 @@ useEffect(()=>{
           <CardTitle>{props.loginMessage && props.loginMessage}</CardTitle>
           <CardText>
             {
-            JSON.stringify(props.firstLogin)==='true'?`
+            localStorage.getItem('firstTime')==='true'?`
             We are Happy to have you!
               check out some classes below, they are 
               created by the Instructors on This Fitness App.
@@ -111,14 +111,14 @@ useEffect(()=>{
     </div>
 
     		  <Box>
-
+            <h1>Class Feed</h1>
           {
 
            props.classes && props.classes.map(aClass=>{
     return(
  <Media className='classCard modalx'  key={aClass.id}>
       <h2></h2>
-        <Media left top href="#">
+        <Media left top>
           <Media  object src={
             aClass.type.match(/yoga/i) || aClass.type.match(/breath/i)?
             yogaType[Math.floor(Math.random()*yogaType.length)]:
