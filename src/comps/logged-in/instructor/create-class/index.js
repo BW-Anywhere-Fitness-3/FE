@@ -33,8 +33,8 @@ const ModalExample = (props) => {
 
 
   return (
-    <div className='modalx'>
-      <Button color="danger" onClick={toggle}>{buttonLabel}</Button>
+    <div className='modalx' style={{marginBottom:'50px'}}>
+      <Button color="info" onClick={toggle} style={{fontWeight:'bolder'}}>{buttonLabel}</Button>
       <Modal isOpen={modal} modalTransition={{ timeout: 400 }} backdropTransition={{ timeout: 1300 }}
         toggle={toggle}  className='modalx' style={matchStyle}>
         <ModalHeader toggle={toggle} style={matchStyle}>CREATE A CLASS</ModalHeader>

@@ -7,7 +7,9 @@ import CreateClass from './create-class/'
 import {connect} from 'react-redux'
 import {getClasses} from '../../../ReduxStore/action'
 import {LoginInstrucotrs,LoginClient} from '../../../ReduxStore/action'
-import {Alert,Badge,ListGroupItem} from 'reactstrap'
+import {Alert,Badge,Button,ListGroupItem} from 'reactstrap'
+import {axiosCall} from '../../axios/'
+
 
 const items = [
   {
@@ -41,7 +43,8 @@ constructor(props){
   }
 
 
- 
+ this.deleteClass = this.deleteClass.bind(this)
+ this.refreshClass = this.refreshClass.bind(this)
 }
 
 
@@ -68,7 +71,14 @@ componentDidUpdate(){
     this.props.getClasses()
   }
 
+deleteClass(id){
 
+  axiosCall().delete(`/api/classes/${id}`).then(res=>{
+    console.log(res)
+    this.refreshClass()
+  })
+
+}
 
   render() {
     return (
@@ -105,6 +115,11 @@ componentDidUpdate(){
     return(
 
       <Alert color='dark' key={aClass.id} className='modalx'>
+      <Button color='danger' onClick={()=>{this.deleteClass(aClass.id)}} style={{
+        position:'relative',
+        float:'left',
+        left:'0'
+      }}><i className='fas fa-window-close'></i></Button>
       <h2>Class Name: {aClass.workoutName}</h2>
       <ul>
       <li>Type: {aClass.type}</li>
