@@ -172,7 +172,7 @@ useEffect(()=>{
       <ListGroupItem>Type<br />({aClass.type})</ListGroupItem>
       <ListGroupItem>Location<br /><i className='fas fa-map-marker-alt'></i> {aClass.location}</ListGroupItem>
       <ListGroupItem><i className='far fa-clock'></i><br />{aClass.durationMins}mins</ListGroupItem>
-      <ListGroupItem>Intesity Level<br /><i className='fas fa-heartbeat'></i>{aClass.intesityLevel}</ListGroupItem>
+      <ListGroupItem>Intesnity Level<br /><i className='fas fa-heartbeat'></i>{aClass.intensityLevel}</ListGroupItem>
       <ListGroupItem>Start Time<br /><small style={{color:'blue',WebkitTextFillColor:'blue'}}> {aClass.startTime}</small></ListGroupItem>
     </ListGroup>
      <div className='modalx'>

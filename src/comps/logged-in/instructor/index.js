@@ -72,11 +72,16 @@ componentDidUpdate(){
   }
 
 deleteClass(id){
+  if(this.props.loginMessage===localStorage.getItem('msg'))
+{
 
-  axiosCall().delete(`/api/classes/${id}`).then(res=>{
+ return axiosCall().delete(`/api/classes/${id}`).then(res=>{
     console.log(res)
     this.refreshClass()
   })
+
+}
+ 
 
 }
 
@@ -113,8 +118,8 @@ deleteClass(id){
 
   this.props.classes.map(aClass=>{
     return(
-
-      <Alert color='dark' key={aClass.id} className='modalx'>
+      <div key={aClass.id} >
+      <Alert color='Dark' className='alrt'>
       <Button color='danger' onClick={()=>{this.deleteClass(aClass.id)}} style={{
         position:'relative',
         float:'left',
@@ -125,15 +130,15 @@ deleteClass(id){
       <li>Type: {aClass.type}</li>
       <li>Location: {aClass.location}</li>
       <li>Duration Time({aClass.durationMins}mins)</li>
-      <li>Intesity Level: {aClass.intesityLevel}</li>
-      <li>Start Time:<small style={{WebkitTextFillColor:'blue',color:'blue'}}> {aClass.startTime}</small></li>
+      <li>Intensity Level: {aClass.intensityLevel}</li>
+      <li>Start Time:<small > {aClass.startTime}</small></li>
       </ul>
       <div className='modalx'>
-<ListGroupItem className="justify-content-between">Attendees<Badge pill color='success'>{aClass.attendees}</Badge></ListGroupItem>
-<ListGroupItem className="justify-content-between">Max Attendees<Badge pill color='danger'>{aClass.maxAttendees}</Badge></ListGroupItem>
+<ListGroupItem className="justify-content-between atn">Attendees<Badge pill color='success'>{aClass.attendees}</Badge></ListGroupItem>
+<ListGroupItem className="justify-content-between atn">Max Attendees<Badge pill color='danger'>{aClass.maxAttendees}</Badge></ListGroupItem>
       </div>
       </Alert>
-
+      </div>
       )
   })
 }

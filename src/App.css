@@ -68,6 +68,27 @@ input{
 }
 
 
+.alrt{
+  background-color: rgba(0,0,0,.5);
+  -webkit-text-fill-color:azure;
+  color:azure;
+  box-shadow:0 0 1px #FF0400;
+  -webkit-transition:1s ease-in-out;
+  transition:1s ease-in-out;
+}
+
+.alrt:hover{
+  -webkit-transition:.7s ease-in-out;
+  transition:.7s ease-in-out;
+  box-shadow:0 0 10px #FF0400;
+
+}
+
+.justify-content-between,.atn{
+  background:#343a40;
+  background-color:#343a40;
+}
+
 @media(max-width:500px){
 
 }

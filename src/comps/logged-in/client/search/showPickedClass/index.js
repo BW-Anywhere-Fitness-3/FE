@@ -13,7 +13,18 @@ const ModalExample = (props) => {
   } = props;
 
   const [modal, setModal] = useState(false);
+  const [joinMsg, setJoinMsg] = useState('');
   const toggle = () => setModal(!modal);
+
+
+  const tyMsg ={
+    fontWeight:'bolder',
+    WebkitTextFillColor:'green',
+    color:'green',
+    textShadow:'0 0 5px #000'
+
+  }
+
 
 const joinClass = (obj) =>{
 axiosCall().put(`/api/classes/${obj.id}`,{...obj,attendees:obj.attendees+1}).then(res=>{
@@ -89,7 +100,10 @@ axiosCall().put(`/api/classes/${obj.id}`,{...obj,attendees:obj.attendees+1}).the
 
       </div>
       <div>
-      <Button onClick={()=>joinClass(go)}>join Class</Button>
+      <span style={tyMsg}>{joinMsg}</span><br />
+      <Button 
+      onClick={()=>{setJoinMsg('thanks for joining!');
+      setTimeout(()=>joinClass(go),2000)}}>join Class</Button>
       </div>
         </Media>
       </Media>
